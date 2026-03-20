@@ -6,6 +6,12 @@ category: poc
 binary: nuclei
 version_cmd: "nuclei -version"
 
+install:
+  go: "go install github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest"
+  brew: "brew install nuclei"
+  docker: "docker pull projectdiscovery/nuclei:latest"
+  f8x: "-nuclei"
+
 parameters:
   - name: target
     type: string

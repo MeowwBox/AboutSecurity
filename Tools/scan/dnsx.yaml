@@ -6,6 +6,10 @@ category: scan
 binary: dnsx
 version_cmd: "dnsx -version"
 
+install:
+  go: "go install github.com/projectdiscovery/dnsx/cmd/dnsx@latest"
+  docker: "docker pull projectdiscovery/dnsx:latest"
+
 parameters:
   - name: target
     type: string

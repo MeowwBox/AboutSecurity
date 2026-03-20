@@ -6,6 +6,11 @@ category: fuzz
 binary: ffuf
 version_cmd: "ffuf -V"
 
+install:
+  go: "go install github.com/ffuf/ffuf/v2@latest"
+  brew: "brew install ffuf"
+  f8x: "-ffuf"
+
 parameters:
   - name: url
     type: string

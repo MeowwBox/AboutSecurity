@@ -6,6 +6,10 @@ category: osint
 binary: uncover
 version_cmd: "uncover -version"
 
+install:
+  go: "go install github.com/projectdiscovery/uncover/cmd/uncover@latest"
+  docker: "docker pull projectdiscovery/uncover:latest"
+
 parameters:
   - name: query
     type: string

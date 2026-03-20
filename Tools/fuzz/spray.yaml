@@ -6,6 +6,9 @@ category: fuzz
 binary: spray
 version_cmd: "spray --version"
 
+install:
+  manual: "https://github.com/chainreactors/spray/releases"
+
 parameters:
   - name: url
     type: string

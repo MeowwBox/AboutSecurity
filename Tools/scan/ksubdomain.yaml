@@ -6,6 +6,10 @@ category: scan
 binary: ksubdomain
 version_cmd: "ksubdomain --version"
 
+install:
+  manual: "https://github.com/boy-hack/ksubdomain/releases"
+  f8x: "-ksub"
+
 parameters:
   - name: target
     type: string

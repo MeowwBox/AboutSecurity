@@ -6,6 +6,11 @@ category: scan
 binary: nmap
 version_cmd: "nmap --version"
 
+install:
+  brew: "brew install nmap"
+  apt: "sudo apt install -y nmap"
+  f8x: "-nmap"
+
 parameters:
   - name: target
     type: string

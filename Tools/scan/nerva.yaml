@@ -6,6 +6,9 @@ category: scan
 binary: nerva
 version_cmd: "nerva --version"
 
+install:
+  go: "go install github.com/praetorian-inc/nerva/cmd/nerva@latest"
+
 parameters:
   - name: target
     type: string

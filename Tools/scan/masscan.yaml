@@ -6,6 +6,11 @@ category: scan
 binary: masscan
 version_cmd: "masscan --version"
 
+install:
+  brew: "brew install masscan"
+  apt: "sudo apt install -y masscan"
+  manual: "https://github.com/robertdavidgraham/masscan/releases"
+
 parameters:
   - name: target
     type: string

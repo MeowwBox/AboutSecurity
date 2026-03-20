@@ -6,6 +6,10 @@ category: scan
 binary: tlsx
 version_cmd: "tlsx -version"
 
+install:
+  go: "go install github.com/projectdiscovery/tlsx/cmd/tlsx@latest"
+  docker: "docker pull projectdiscovery/tlsx:latest"
+
 parameters:
   - name: target
     type: string

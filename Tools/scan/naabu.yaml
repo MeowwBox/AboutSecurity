@@ -6,6 +6,12 @@ category: scan
 binary: naabu
 version_cmd: "naabu -version"
 
+install:
+  go: "go install github.com/projectdiscovery/naabu/v2/cmd/naabu@latest"
+  brew: "brew install naabu"
+  docker: "docker pull projectdiscovery/naabu:latest"
+  f8x: "-naabu"
+
 parameters:
   - name: target
     type: string

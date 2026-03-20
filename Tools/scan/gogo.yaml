@@ -6,6 +6,9 @@ category: scan
 binary: gogo
 version_cmd: "gogo -v 2>&1 | head -1"
 
+install:
+  manual: "https://github.com/chainreactors/gogo/releases"
+
 parameters:
   - name: target
     type: string

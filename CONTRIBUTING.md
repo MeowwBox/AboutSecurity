@@ -59,6 +59,20 @@ binary_path: ""                 # 可选：绝对路径，如 /usr/local/bin/nma
 version_cmd: "nmap --version"   # 可选：版本检测命令
 
 # ============================================================
+# 安装方式（推荐填写，便于工具管理页面一键复制安装命令）
+# ============================================================
+# 支持的安装方式：go / brew / pip / apt / docker / f8x / manual
+# 至少填写一种，多填更好（覆盖不同平台/偏好）
+install:
+  go: "go install github.com/xxx/xxx@latest"      # Go 安装
+  brew: "brew install xxx"                         # Homebrew (macOS)
+  pip: "pip3 install xxx"                          # Python PyPI
+  apt: "sudo apt install -y xxx"                   # Debian/Ubuntu
+  docker: "docker pull xxx:latest"                 # Docker 镜像
+  f8x: "-xxx"                                      # f8x 自动化安装脚本标志
+  manual: "https://github.com/xxx/xxx/releases"    # 手动下载页面
+
+# ============================================================
 # 参数定义（必填，至少一个）
 # ============================================================
 # AI Agent 看到这些参数，并根据 description 决定传什么值
@@ -226,6 +240,9 @@ homepage: "https://github.com/projectdiscovery/subfinder"
 category: scan
 binary: subfinder
 version_cmd: "subfinder -version"
+install:
+  go: "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
+  brew: "brew install subfinder"
 
 parameters:
   - name: target
@@ -265,6 +282,9 @@ homepage: "https://github.com/projectdiscovery/nuclei"
 category: poc
 binary: nuclei
 version_cmd: "nuclei -version"
+install:
+  go: "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest"
+  brew: "brew install nuclei"
 
 parameters:
   - name: target
@@ -323,6 +343,9 @@ homepage: "https://github.com/ffuf/ffuf"
 category: brute
 binary: ffuf
 version_cmd: "ffuf -V"
+install:
+  go: "go install github.com/ffuf/ffuf/v2@latest"
+  brew: "brew install ffuf"
 
 parameters:
   - name: target
@@ -377,6 +400,7 @@ constraints:
 - [ ] `id` 以 `ext_` 开头，全局唯一
 - [ ] `description` 清楚说明工具能做什么（AI 据此决定是否调用）
 - [ ] `homepage` 填写工具的 GitHub 地址或官网，方便用户了解和安装
+- [ ] `install` 至少填写一种安装方式（go/brew/pip/apt/docker/f8x/manual）
 - [ ] 至少有一个 `required: true` 的 `target` 参数
 - [ ] `command_template` 渲染后是合法的命令行
 - [ ] `output.parser` 与工具实际输出格式匹配

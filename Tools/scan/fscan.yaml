@@ -6,6 +6,10 @@ category: scan
 binary: fscan
 version_cmd: "fscan -h 127.0.0.1 2>&1 | head -1"
 
+install:
+  manual: "https://github.com/shadow1ng/fscan/releases"
+  f8x: "-fscan"
+
 parameters:
   - name: target
     type: string

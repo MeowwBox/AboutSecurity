@@ -6,6 +6,12 @@ category: scan
 binary: httpx
 version_cmd: "httpx -version"
 
+install:
+  go: "go install github.com/projectdiscovery/httpx/cmd/httpx@latest"
+  brew: "brew install httpx"
+  docker: "docker pull projectdiscovery/httpx:latest"
+  f8x: "-httpx"
+
 parameters:
   - name: target
     type: string

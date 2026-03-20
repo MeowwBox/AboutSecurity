@@ -6,6 +6,12 @@ category: scan
 binary: katana
 version_cmd: "katana -version"
 
+install:
+  go: "CGO_ENABLED=1 go install github.com/projectdiscovery/katana/cmd/katana@latest"
+  brew: "brew install katana"
+  docker: "docker pull projectdiscovery/katana:latest"
+  f8x: "-katana"
+
 parameters:
   - name: target
     type: string

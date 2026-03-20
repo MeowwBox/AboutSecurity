@@ -6,6 +6,10 @@ category: scan
 binary: mapcidr
 version_cmd: "mapcidr -version"
 
+install:
+  go: "go install github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest"
+  docker: "docker pull projectdiscovery/mapcidr:latest"
+
 parameters:
   - name: cidr
     type: string

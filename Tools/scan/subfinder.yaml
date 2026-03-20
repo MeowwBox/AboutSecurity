@@ -6,6 +6,12 @@ category: scan
 binary: subfinder
 version_cmd: "subfinder -version"
 
+install:
+  go: "go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
+  brew: "brew install subfinder"
+  docker: "docker pull projectdiscovery/subfinder:latest"
+  f8x: "-subfinder"
+
 parameters:
   - name: target
     type: string

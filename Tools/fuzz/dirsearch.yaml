@@ -6,6 +6,10 @@ category: brute
 binary: dirsearch
 version_cmd: "dirsearch --version"
 
+install:
+  pip: "pip3 install dirsearch"
+  docker: "docker pull maurosoria/dirsearch"
+
 parameters:
   - name: target
     type: string
