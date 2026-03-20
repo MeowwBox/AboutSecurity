@@ -1,0 +1,42 @@
+id: report-generate
+name: 渗透测试报告
+description: 基于已有数据自动生成完整的渗透测试报告
+category: 综合
+tags: [report, summary, documentation]
+difficulty: easy
+icon: "📝"
+step_count: 4
+variables:
+  - name: project_name
+    label: 项目名称
+    placeholder: XX公司渗透测试
+    required: true
+prompt: |
+  请为项目「{{project_name}}」生成完整的渗透测试报告：
+  1. 使用 get_store_stats 获取整体统计
+  2. 使用 query_assets 获取所有资产（limit 100）
+  3. 使用 query_vulnerabilities 获取所有漏洞（limit 100）
+  4. 使用 query_credentials 获取所有凭据
+
+  报告格式：
+  ## 1. 执行摘要
+  - 测试时间、范围、方法论
+  - 关键发现总结
+
+  ## 2. 资产清单
+  - 按类型分类的资产统计
+
+  ## 3. 漏洞发现
+  - 按严重度排序的漏洞清单
+  - 每个漏洞的详情、影响、修复建议
+
+  ## 4. 风险评估
+  - 整体风险等级
+  - 风险矩阵
+
+  ## 5. 修复建议
+  - 按优先级排序的修复措施
+
+  ## 6. 附录
+  - 工具列表
+  - 测试时间线

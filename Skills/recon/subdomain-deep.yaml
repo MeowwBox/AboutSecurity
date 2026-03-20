@@ -1,0 +1,20 @@
+id: subdomain-deep
+name: 深度子域名挖掘
+description: DNS枚举+爬虫+OSINT三引擎联合子域名挖掘，最大化资产发现覆盖
+category: 侦察
+tags: [recon, subdomain, dns, osint, crawl]
+difficulty: medium
+icon: "🔎"
+step_count: 4
+variables:
+  - name: target
+    label: 目标域名
+    placeholder: example.com
+    required: true
+prompt: |
+  请对目标 {{target}} 执行深度子域名挖掘：
+  1. 使用 scan_dns 进行 DNS 子域名枚举
+  2. 使用 osint_fofa 搜索 domain="{{target}}" 相关资产
+  3. 使用 scan_crawl 爬取主站发现更多子域
+  4. 汇总去重所有子域名，按类型分类（Web/API/邮件/内部），评估攻击面
+  对高价值目标给出进一步侦察建议。

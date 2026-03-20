@@ -1,0 +1,21 @@
+id: target-profiling
+name: 目标画像分析
+description: 对目标进行全景画像：资产+端口+指纹+技术栈，输出完整目标档案
+category: 侦察
+tags: [recon, profiling, fingerprint, port]
+difficulty: medium
+icon: "📊"
+step_count: 5
+variables:
+  - name: target
+    label: 目标（域名/IP）
+    placeholder: example.com
+    required: true
+prompt: |
+  请对目标 {{target}} 执行全景画像分析：
+  1. 使用 scan_dns 获取子域名
+  2. 使用 scan_port 扫描所有发现资产的端口
+  3. 使用 scan_urlive 检测 URL 存活
+  4. 使用 scan_finger 识别技术栈和框架
+  5. 使用 query_assets 和 query_vulnerabilities 汇总已有数据
+  输出一份完整的目标档案，包括：技术栈分布、暴露服务统计、高风险端口、潜在攻击入口。

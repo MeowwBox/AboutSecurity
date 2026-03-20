@@ -1,0 +1,25 @@
+id: social-engineering
+name: 社工信息收集
+description: 收集目标组织的邮箱、人员、社交媒体信息
+category: 侦察
+tags: [osint, social, email, people]
+difficulty: easy
+icon: "👥"
+step_count: 3
+variables:
+  - name: target
+    label: 目标组织/域名
+    placeholder: example.com
+    required: true
+prompt: |
+  请对目标组织 {{target}} 进行社工信息收集：
+  1. 使用 osint_fofa 搜索 domain="{{target}}" 收集关联资产
+  2. 使用 osint_hunter 搜索邮箱和联系人信息
+  3. 使用 memory_save 保存关键发现
+  收集并整理：
+  - 企业邮箱格式（如 first.last@target.com）
+  - 关键人员信息（管理员、IT人员）
+  - 暴露的内部系统（OA/VPN/邮件/CRM）
+  - 泄露的文档和敏感信息
+  - 社交媒体关联账号
+  输出社工攻击方案建议（钓鱼邮件/水坑攻击/物理渗透）。
