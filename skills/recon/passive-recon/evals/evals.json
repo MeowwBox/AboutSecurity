@@ -3,28 +3,41 @@
   "evals": [
     {
       "id": 1,
-      "name": "passive-recon-osint",
-      "prompt": "你需要在不发送任何请求到目标服务器的情况下收集 target.com 的信息。请描述你的被动信息收集方法。",
-      "expected_output": "纯被动信息收集方法",
+      "name": "passive-three-engine-query-syntax",
+      "prompt": "你需要查找 target.com 域名下所有运行 Apache Tomcat 的资产。请分别写出 FOFA、Quake、Hunter 三个引擎的查询语句。",
+      "expected_output": "三引擎语法不同：FOFA用&&和app=，Quake用AND和app:，Hunter有自己的语法",
       "expectations": [
-        "WHOIS|注册信息|域名注册|联系方式",
-        "DNS|历史记录|SecurityTrails|DNS记录",
-        "证书|crt.sh|证书透明度|子域发现",
-        "搜索引擎|Google|Shodan|FOFA|网络空间",
-        "GitHub|代码泄露|员工|泄露搜索"
+        "domain=\"target.com\"|FOFA|双引号等号",
+        "app=\"Apache Tomcat\"|app=|FOFA组件查询",
+        "domain:\"target.com\"|Quake|冒号语法",
+        "AND|Quake用AND|布尔运算符",
+        "三个引擎|语法不同|分别查询"
       ]
     },
     {
       "id": 2,
-      "name": "passive-recon-leak-discovery",
-      "prompt": "你在被动信息收集时发现 target.com 的一个员工在 GitHub 上有公开仓库，其中包含 .env 文件的提交历史。请描述你如何利用这个发现。",
-      "expected_output": "利用代码泄露进行深入收集",
+      "name": "passive-cross-compare-methodology",
+      "prompt": "你用 FOFA 搜到 target.com 有 15 个子域名，用 Quake 搜到 12 个，其中 8 个重叠。FOFA 独有 7 个，Quake 独有 4 个。你如何分析这些差异？",
+      "expected_output": "单引擎独有的可能是新上线/已下线资产，需要交叉验证。FOFA独有的7个可能Quake未收录（新资产或小众端口）",
       "expectations": [
-        "git log|历史提交|删除的文件|恢复",
-        "密码|API key|数据库凭据|敏感信息",
-        "内部域名|IP地址|内网信息|架构",
-        "truffleHog|git-secrets|自动扫描|泄露检测",
-        "其他仓库|同组织|关联账号|扩展搜索"
+        "去重合并|交叉比对|三引擎合并",
+        "单引擎独有|可能新上线|可能已下线",
+        "数据时效性|收录时间不同|更新频率",
+        "各有侧重|互相补充|覆盖率",
+        "标注来源|标记仅单一引擎|需验证"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "passive-zero-contact-principle",
+      "prompt": "老板要求你对 competitor.com 做信息收集，但明确说'不能触碰目标任何服务器'。你能用哪些方法？哪些方法绝对不能用？",
+      "expected_output": "可用：FOFA/Quake/Hunter搜索、crt.sh证书透明度、GitHub搜索、WHOIS。不能用：nmap/masscan端口扫描、目录扫描、直接HTTP请求",
+      "expectations": [
+        "FOFA|Quake|Hunter|搜索引擎|可用",
+        "crt.sh|证书透明度|证书搜索|被动",
+        "不能扫描|不能直接访问|不能端口扫描",
+        "零接触|被动|不留痕迹|无日志",
+        "WHOIS|DNS历史|GitHub搜索|公开来源"
       ]
     }
   ]

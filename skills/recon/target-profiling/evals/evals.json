@@ -3,28 +3,41 @@
   "evals": [
     {
       "id": 1,
-      "name": "target-profiling-web-app",
-      "prompt": "你拿到一个目标 Web 应用 http://target:8080。需要在 5 分钟内完成目标画像。请描述你如何快速确定技术栈、功能模块和潜在攻击面。",
-      "expected_output": "快速目标画像方法论",
+      "name": "profiling-four-tier-risk-classification",
+      "prompt": "侦察发现以下资产：1) admin.target.com:8443 (Tomcat Manager) 2) www.target.com (企业官网) 3) cdn.target.com (静态资源) 4) dev-api.target.com (返回 Spring Boot Actuator)。请按风险等级从高到低排序并说明理由。",
+      "expected_output": "极高: admin(管理后台)+dev-api(开发环境+Actuator暴露) > 中: www(标准Web) > 低: cdn(静态资源)",
       "expectations": [
-        "技术栈|Server头|X-Powered-By|框架识别",
-        "功能模块|登录|注册|搜索|上传|功能枚举",
-        "输入点|表单|参数|API端点|攻击面",
-        "认证|Session|JWT|Cookie|认证机制",
-        "WAF|CDN|防护检测|安全措施识别"
+        "极高|admin|管理后台|Tomcat Manager",
+        "极高|dev|开发环境|Actuator|安全措施弱",
+        "中风险|www|标准Web|需手动测试",
+        "低风险|cdn|静态资源|无动态内容",
+        "管理后台|开发测试|优先攻击"
       ]
     },
     {
       "id": 2,
-      "name": "target-profiling-organization",
-      "prompt": "你在做一次针对某公司的红队评估。请描述你如何构建目标组织的完整画像（技术资产 + 人员信息）。",
-      "expected_output": "组织级目标画像",
+      "name": "profiling-subnet-topology-inference",
+      "prompt": "子域名解析结果显示：web1.target.com→10.0.1.10, web2.target.com→10.0.1.11, db.target.com→10.0.2.20, vpn.target.com→203.0.113.5。你能从 IP 分布推断出什么网络架构信息？",
+      "expected_output": "10.0.1.x = Web服务器段, 10.0.2.x = 数据库段（不同子网隔离）, 203.0.113.5 = 公网IP（VPN入口）。Web→DB可能有横向移动路径",
       "expectations": [
-        "域名|IP段|ASN|技术资产",
-        "员工|LinkedIn|邮箱格式|人员信息",
-        "技术栈|招聘信息|推断技术|供应链",
-        "外部服务|SaaS|云服务|第三方资产",
-        "攻击路径|优先级|最可能的突破口"
+        "10.0.1|Web段|同一子网|Web服务器",
+        "10.0.2|数据库段|不同子网|网络隔离",
+        "子网|VLAN|网段隔离|网络拓扑",
+        "横向移动|从Web到DB|跨网段",
+        "VPN|公网IP|外部入口|203.0.113"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "profiling-info-gap-identification",
+      "prompt": "你完成了目标画像：发现 3 个 Web 应用、2 个数据库端口、1 个 VPN。但你注意到 DNS 枚举只用了字典爆破，端口扫描只扫了 Top 1000。你的信息缺口报告应该指出哪些不足？",
+      "expected_output": "子域名来源单一（缺OSINT+爬虫补充），端口扫描不全面（缺全端口扫描），缺少非标准端口30000+的发现",
+      "expectations": [
+        "子域名来源单一|缺OSINT|缺爬虫|覆盖不足",
+        "端口不全|Top 1000|全端口|65535",
+        "非标准端口|30000+|高端口|隐藏服务",
+        "信息缺口|不足|需补充|遗漏",
+        "推荐补充|建议|下一步侦察"
       ]
     }
   ]
