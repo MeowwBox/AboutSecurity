@@ -15,13 +15,14 @@ AboutSecurity/
 │   ├── brute/                # 爆破/Fuzz 类
 │   ├── postexploit/          # 后渗透类
 │   └── util/                 # 辅助工具类
-├── Skills/                   # AI Agent 技能剧本
-│   ├── recon/                # 侦察类
-│   ├── exploit/              # 漏洞利用类
-│   ├── postexploit/          # 后渗透类
-│   ├── lateral/              # 内网渗透类
-│   ├── cloud/                # 云环境类
-│   └── general/              # 综合类
+├── Skills/                   # AI Agent 技能方法论
+│   ├── recon/                # 侦察类 (5)
+│   ├── exploit/              # 漏洞利用类 (26)
+│   ├── ctf/                  # CTF 竞赛类 (5)
+│   ├── postexploit/          # 后渗透类 (6)
+│   ├── lateral/              # 内网渗透类 (3)
+│   ├── cloud/                # 云环境类 (2)
+│   └── general/              # 综合类 (4)
 └── manifest.yaml
 ```
 
@@ -410,199 +411,218 @@ constraints:
 
 ---
 
-# 二、Skills 技能剧本编写规范
+# 二、Skills 技能方法论编写规范
 
 ## 2.1 概述
 
-每个 YAML 文件定义一个 AI Agent 技能（Playbook）。技能是一段预设的 AI 提示词模板，指导 Agent 按步骤执行渗透任务。
+每个 Skill 是一个独立目录，包含一个 `SKILL.md` 文件。SKILL.md 使用 **YAML 前言 + Markdown 正文** 的格式，正文是方法论驱动的渗透指南，而非工具调用列表。
 
-## 2.2 文件命名
+Kitsune Agent 通过 `description` 字段匹配用户意图，读取正文作为上下文指导执行。
+
+**核心原则**：
+- **description 是触发器** — Agent 通过 description 决定是否加载此 Skill，务必写清楚触发场景
+- **正文是方法论** — 教 Agent "怎么思考"，而非机械地列出工具调用步骤
+- **解释 why** — 说明为什么用某种方法，而非写死 MUST/NEVER 规则
+- **不使用模板变量** — `{{target}}` 等占位符不会被替换，不要使用
+
+## 2.2 目录结构
 
 ```
-{技能名}.yaml
+Skills/
+├── recon/                    # 侦察类
+│   └── recon-full/
+│       └── SKILL.md
+├── exploit/                  # 漏洞利用类
+│   └── sql-injection-methodology/
+│       └── SKILL.md
+├── ctf/                      # CTF 竞赛类
+├── postexploit/              # 后渗透类
+├── lateral/                  # 内网渗透类
+├── cloud/                    # 云环境类
+└── general/                  # 综合类
 ```
 
-示例：`recon-full.yaml`、`sql-injection-test.yaml`
+每个技能一个目录（将来可在目录内添加 `references/` 补充材料）。
 
-## 2.3 完整字段说明
+## 2.3 SKILL.md 格式
 
-```yaml
-# ============================================================
-# 基本信息（必填）
-# ============================================================
-id: my-skill-name              # 技能唯一标识（英文短横线命名）
-name: 技能显示名称               # 中文名
-description: 技能功能描述        # 一句话说明这个技能做什么
-category: 侦察                  # 分类，见下方枚举
-tags: [recon, subdomain]        # 标签数组，用于搜索和筛选
-difficulty: medium              # easy / medium / hard
-icon: "🔍"                     # 可选：显示图标
-step_count: 5                   # 可选：预估执行步骤数
+```markdown
+---
+name: skill-name
+description: "一段详细的、带触发场景的描述。当遇到 X 情况、发现 Y 特征、需要做 Z 测试时使用。覆盖 A、B、C 方面"
+metadata:
+  tags: "tag1,tag2,tag3,关键词"
+  difficulty: "easy|medium|hard"
+  icon: "🔍"
+  category: "分类名"
+---
 
-# ============================================================
-# 用户变量（必填，至少一个）
-# ============================================================
-# 用户在使用技能前需要填写的参数
-variables:
-  - name: target                # 变量名，在 prompt 中用 {{target}} 引用
-    label: 目标域名              # 显示标签
-    placeholder: example.com    # 输入框占位提示
-    required: true
-  - name: scope
-    label: 扫描范围
-    placeholder: "仅主域名 / 包含子域名"
-    required: false
+# 技能标题
 
-# ============================================================
-# 提示词模板（必填）
-# ============================================================
-# AI Agent 收到此 prompt 后按指示执行
-# 用 {{变量名}} 引用 variables 中的变量
-prompt: |
-  请对目标 {{target}} 执行以下任务：
-  1. 步骤一描述
-  2. 步骤二描述
-  ...
+简要说明这个技能解决什么问题、为什么需要它。
+
+## Phase 1: 第一阶段
+
+### 1.1 子步骤
+具体方法论内容...
+决策表、判断条件、攻击向量...
+
+## Phase 2: 第二阶段
+...
+
+## 注意事项
+- 关键提醒和常见陷阱
 ```
 
-## 2.4 category 枚举
+## 2.4 字段说明
 
-| 值 | 说明 |
-|---|---|
-| `侦察` | 资产发现、信息收集、OSINT |
-| `漏洞利用` | Web 漏洞、POC 验证、Fuzz |
-| `后渗透` | 提权、持久化、凭据收集 |
-| `内网渗透` | AD 攻击、横向移动、跳板 |
-| `云环境` | 云资产审计、IAM、元数据 |
-| `综合` | 全链路、红队评估、报告生成 |
+### 前言字段
 
-## 2.5 prompt 编写要点
+| 字段 | 必填 | 说明 |
+|------|------|------|
+| `name` | ✅ | 技能唯一标识，英文短横线命名，与目录名一致 |
+| `description` | ✅ | **最重要的字段**。详细描述触发场景和覆盖范围（见 2.5） |
+| `metadata.tags` | ✅ | 逗号分隔的标签，包含中英文关键词便于搜索 |
+| `metadata.difficulty` | ✅ | `easy` / `medium` / `hard` |
+| `metadata.icon` | 可选 | Emoji 图标 |
+| `metadata.category` | ✅ | 分类名（见 2.6） |
 
-### 必须引用 Kitsune 内置工具名
+### 正文要求
 
-Agent 按工具名调用，所以 prompt 中要写明确的工具名。可用的内置工具：
+- **< 500 行**（超过说明需要拆分）
+- **方法论驱动**：写决策树、判断条件、攻击策略，而非工具调用清单
+- **渐进式披露**：先概述，再分阶段深入
+- **包含实际命令示例**：用代码块展示，但作为方法论的一部分而非机械步骤
+- **交叉引用**：用反引号引用其他技能名，如 `参考 \`jwt-attack-methodology\` 技能`
 
-**资产探测**：`scan_dns`（子域名）、`scan_port`（端口）、`scan_urlive`（URL存活）、`scan_finger`（指纹）、`scan_crawl`（爬虫）、`scan_app`（应用识别）
+## 2.5 description 写法
 
-**情报搜索**：`osint_fofa`、`osint_quake`、`osint_hunter`
+Description 是 Agent 选择技能的**唯一依据**，必须"主动推销"：
 
-**漏洞检测**：`poc_web`（Web POC）、`poc_category`（分类 POC）、`poc_default_login`（默认口令）
-
-**爆破攻击**：`brute_dir`（目录爆破）、`brute_basic`（基础爆破）、`brute_host`（主机爆破）
-
-**后渗透**：`privesc_check_linux`、`privesc_check_windows`、`privesc_suggest`
-
-**横向移动**：`lateral_list_methods`、`lateral_generate_command`
-
-**辅助**：`memory_save`、`memory_recall`、`query_assets`、`query_vulnerabilities`、`save_credential`
-
-> 外部工具（Tools/ 中定义的 ext_xxx）也可在 prompt 中引用。
-
-### 结构化步骤
-
-每步写清楚：用什么工具 → 对什么目标 → 期望什么结果。
-
-```yaml
-prompt: |
-  请对 {{target}} 执行渗透测试：
-  1. 使用 scan_dns 枚举子域名
-  2. 对发现的子域名使用 scan_port 扫描开放端口
-  3. 使用 scan_urlive 检测存活 URL
-  4. 对存活 URL 使用 poc_web 进行漏洞扫描
-  5. 将所有发现使用 memory_save 保存到记忆库
-  最终输出完整的渗透测试报告。
+❌ **差的 description**：
+```
+"SQL 注入测试"
 ```
 
-### 结果处理指示
-
-告诉 Agent 如何处理每步结果：
-
-```yaml
-prompt: |
-  ...
-  每步完成后总结发现数量和关键信息。
-  如果某步发现 0 条结果，分析可能原因并尝试替代方案。
-  如发现漏洞，请标注风险等级（高/中/低）并给出修复建议。
+✅ **好的 description**：
+```
+"SQL 注入漏洞检测与利用全流程。当发现用户输入被拼接到数据库查询、
+搜索/登录/排序功能可能存在注入点、或需要从注入获取数据库内容时使用。
+覆盖联合注入、报错注入、布尔盲注、时间盲注、堆叠注入，以及 WAF 绕过策略"
 ```
 
-## 2.6 完整示例
+要点：
+1. **一句话说明是什么**
+2. **列出触发场景**（"当...时使用"）
+3. **列出覆盖范围**（"覆盖 X、Y、Z"）
+
+## 2.6 category 枚举
+
+| 目录 | category 值 | 说明 |
+|------|-------------|------|
+| `recon/` | 侦察 | 资产发现、信息收集、OSINT、社工 |
+| `exploit/` | 漏洞利用 | Web 漏洞方法论、注入、文件操作、认证绕过 |
+| `ctf/` | CTF | CTF 竞赛专用方法论、Flag 搜索 |
+| `postexploit/` | 后渗透 | 提权、持久化、凭据收集、横向移动 |
+| `lateral/` | 内网渗透 | AD 攻击、内网侦察、多层网络穿透 |
+| `cloud/` | 云环境 | 云元数据利用、IAM 审计、云提权 |
+| `general/` | 综合 | 红队评估、报告生成、供应链审计 |
+
+## 2.7 正文写作要点
+
+### 方法论 vs 工具列表
+
+❌ **工具调用列表**（不要这样写）：
+```markdown
+1. 使用 scan_dns 扫描子域名
+2. 使用 scan_port 扫描端口
+3. 使用 poc_web 扫描漏洞
+4. 使用 memory_save 保存结果
+```
+
+✅ **方法论驱动**（应该这样写）：
+```markdown
+## Phase 1: 攻击面发现
+先确定注入点类型——URL 参数、POST 表单、HTTP Header、Cookie 都可能是入口。
+判断方法：在参数值后加单引号 `'`，观察响应变化：
+- 报错（含 SQL 语法错误） → 报错注入
+- 页面内容变化但无报错 → 布尔盲注
+- 无任何变化 → 尝试时间盲注 `sleep(5)`
+```
+
+### 使用决策表
+
+当有多个分支时，用表格让 Agent 快速判断：
+
+```markdown
+| 发现 | 技术 | 下一步 |
+|------|------|--------|
+| 报错含 MySQL 语法 | MySQL | UNION SELECT + information_schema |
+| 报错含 ORA- | Oracle | UNION SELECT FROM dual |
+| 响应时间差异 | 通用 | 时间盲注 benchmark/sleep |
+```
+
+### 交叉引用其他技能
+
+```markdown
+如果发现 JWT Token，参考 `jwt-attack-methodology` 进行 Token 攻击。
+获取 shell 后，参考 `post-exploit-linux` 或 `post-exploit-windows` 进行后渗透。
+```
+
+## 2.8 完整示例
 
 <details>
-<summary>API 安全测试</summary>
+<summary>XSS 方法论（简化示例）</summary>
 
-```yaml
-id: api-security-test
-name: API 安全测试
-description: 对 REST API 进行全面安全测试，包括认证绕过、注入、信息泄露
-category: 漏洞利用
-tags: [api, web, injection, auth]
-difficulty: hard
-icon: "🔌"
-step_count: 5
-variables:
-  - name: target
-    label: API 基础 URL
-    placeholder: https://api.example.com
-    required: true
-  - name: auth_token
-    label: 认证 Token（可选）
-    placeholder: Bearer xxx
-    required: false
-prompt: |
-  请对 API 目标 {{target}} 进行安全测试：
-  1. 使用 scan_finger 识别 API 框架和版本
-  2. 使用 scan_crawl 发现 API 端点
-  3. 使用 brute_dir 爆破常见 API 路径（/api/v1, /swagger, /graphql 等）
-  4. 使用 poc_web 检测已知 API 漏洞
-  5. 对发现的端点检查：
-     - 未授权访问（去掉认证头重放）
-     - 信息泄露（debug 端点、错误信息）
-     - 注入风险
-  {{auth_token}}
-  每步完成后记录发现，最终生成 API 安全评估报告。
+```markdown
+---
+name: xss-methodology
+description: "XSS 跨站脚本漏洞检测与利用。当发现用户输入被回显到页面、
+需要测试反射型/存储型/DOM 型 XSS、或需要绕过 WAF/CSP 时使用"
+metadata:
+  tags: "xss,cross-site-scripting,反射型,存储型,dom,csp绕过"
+  difficulty: "medium"
+  icon: "💉"
+  category: "漏洞利用"
+---
+
+# XSS 检测与利用方法论
+
+## Phase 1: 注入点定位
+找到用户输入回显的位置，判断上下文：
+| 回显位置 | Payload 方向 |
+|----------|-------------|
+| HTML 标签之间 | `<script>alert(1)</script>` |
+| HTML 属性值内 | `" onmouseover="alert(1)` |
+| JS 代码内 | `';alert(1)//` |
+| URL 参数回显 | 反射型 XSS |
+
+## Phase 2: 类型确认
+- 输入立即回显 → 反射型
+- 输入后在其他页面出现 → 存储型
+- 仅在前端 JS 处理 → DOM 型（查看 document.location 等 source）
+
+## Phase 3: 绕过策略
+...（WAF 绕过、CSP 绕过、编码绕过）
+
+## 注意事项
+- 存储型 XSS 风险最高（影响所有访问者）
+- DOM XSS 服务端看不到 payload，需要分析前端 JS
 ```
 </details>
 
-<details>
-<summary>供应链安全审计</summary>
+## 2.9 检查清单
 
-```yaml
-id: supply-chain-scan
-name: 供应链安全审计
-description: 检查目标站点的前端依赖库和第三方资源是否存在已知漏洞
-category: 综合
-tags: [supply-chain, web, dependency]
-difficulty: medium
-icon: "📦"
-step_count: 3
-variables:
-  - name: target
-    label: 目标网站
-    placeholder: https://example.com
-    required: true
-prompt: |
-  请对 {{target}} 进行供应链安全审计：
-  1. 使用 scan_finger 识别前端框架和第三方库版本
-  2. 使用 scan_crawl 抓取页面，提取所有外部 JS/CSS 资源链接
-  3. 分析发现的第三方库：
-     - 是否有已知 CVE
-     - 版本是否过旧
-     - 是否从不可信 CDN 加载
-  生成供应链安全审计报告，按风险等级排序。
-```
-</details>
+提交 Skill 前，请确认：
 
-## 2.7 检查清单
-
-提交 Skill YAML 前，请确认：
-
-- [ ] `id` 全局唯一，英文短横线命名
-- [ ] `description` 一句话说明技能功能
+- [ ] 目录名与 `name` 字段一致
+- [ ] `description` 包含触发场景和覆盖范围（不只是功能名称）
+- [ ] `tags` 包含中英文关键词
 - [ ] `category` 是规范的枚举值
-- [ ] `variables` 至少有一个 `required: true` 参数
-- [ ] `prompt` 中每步引用了正确的工具名
-- [ ] `prompt` 中所有 `{{变量名}}` 在 `variables` 中有定义
-- [ ] `tags` 包含相关关键词便于搜索
+- [ ] 正文 < 500 行
+- [ ] 正文是方法论（有决策树/判断条件），不是工具调用清单
+- [ ] 没有使用 `{{target}}` 等模板变量
+- [ ] 有交叉引用到相关技能（如适用）
 - [ ] `difficulty` 与实际复杂度匹配
 
 ---
