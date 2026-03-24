@@ -20,7 +20,7 @@ parameters:
     type: string
     description: "字典文件路径。可使用绝对路径、或相对于 Dic 目录的相对路径（如 Web/Directory/php/Fuzz_php.txt）。留空则自动使用通用目录字典。"
     required: false
-    default: "Web/Directory/Fuzz_common.txt"
+    default: "{{.DicDir}}/Web/Directory/Fuzz_common.txt"
   - name: method
     type: string
     description: "HTTP 请求方法"
