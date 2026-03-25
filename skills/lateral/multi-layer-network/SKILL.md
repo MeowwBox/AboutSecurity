@@ -71,3 +71,6 @@ fscan -h 10.0.0.0/24 -nopoc
 - 隧道建立后先 `proxychains curl` 测试连通性再做大范围扫描
 - 隧道进程容易中断，用 `autossh` 或 frp 断线重连保持稳定
 - 记录每一跳的凭据和隧道命令，便于重建
+
+## Proxychains 限制
+- UDP 不支持：proxychains 仅代理 TCP，UDP 扫描（-sU）会失败

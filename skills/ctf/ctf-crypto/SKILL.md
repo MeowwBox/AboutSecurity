@@ -83,3 +83,9 @@ print(long_to_bytes(m))
 - **Bleichenbacher (ROBOT)**：RSA PKCS#1 v1.5 填充oracle → ~10K 次查询恢复明文
 - **CRC32 线性**：追加4字节可伪造任意CRC32签名
 - **哈希长度扩展**：Merkle-Damgard 结构 `hash(SECRET||data)` 可追加数据
+
+## RSA 小指数攻击
+- 当 e=3 时，若 m^3 < n（不取模、没有模运算），可直接开立方恢复明文
+
+## Padding Oracle 细节
+- 每字节最多 256 次尝试，暴力尝试所有可能值

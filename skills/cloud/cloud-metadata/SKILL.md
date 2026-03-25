@@ -73,3 +73,11 @@ http://100.100.100.200/latest/meta-data/
 - 云凭据有过期时间（通常 6-12 小时），获取后应**立即利用**
 - 凭据操作会留下 CloudTrail/Activity Log，注意操作痕迹
 - **User-Data** (`/latest/user-data`) 经常包含启动脚本中的密码
+
+## 多云元数据差异
+- 不同云厂商的元数据地址不同（AWS: 169.254.169.254, Azure: 169.254.169.254, GCP: metadata.google.internal）
+- 先确认云平台类型，再选择对应端点
+- IMDSv2 需要先 PUT 获取 token，GET 无法直接获取，是两步操作
+
+## 后续利用
+- 获取云凭据后可进行横向移动，访问更多云资源，提权路径扩展攻击面

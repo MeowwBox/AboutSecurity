@@ -1,0 +1,46 @@
+{
+  "skill_id": "multi-layer-network",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "pivot",
+        "隧道",
+        "proxy",
+        "tunnel"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "工具搜索",
+      "keywords": [
+        "frp",
+        "chisel",
+        "socks",
+        "内网穿透"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_positive",
+      "description": "技术搜索",
+      "keywords": [
+        "端口转发",
+        "跳板",
+        "multi-layer"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "keyword_negative",
+      "description": "不应被web漏洞召回",
+      "keywords": [
+        "sql injection",
+        "xss"
+      ]
+    }
+  ]
+}

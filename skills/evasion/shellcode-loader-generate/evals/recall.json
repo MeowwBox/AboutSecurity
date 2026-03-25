@@ -1,0 +1,34 @@
+{
+  "skill_id": "shellcode-loader-generate",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "shellcode loader",
+        "loader generate",
+        "VirtualAlloc"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "语言搜索",
+      "keywords": [
+        "rust",
+        "cpp",
+        "CreateThread"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被CTF pwn召回",
+      "keywords": [
+        "ctf pwn",
+        "rop"
+      ]
+    }
+  ]
+}

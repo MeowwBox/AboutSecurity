@@ -1,0 +1,34 @@
+{
+  "skill_id": "evasion-research",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "evasion research",
+        "loader",
+        "technique"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "知识库搜索",
+      "keywords": [
+        "github",
+        "knowledge-base",
+        "shellcode"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被recon召回",
+      "keywords": [
+        "subdomain",
+        "port scan"
+      ]
+    }
+  ]
+}

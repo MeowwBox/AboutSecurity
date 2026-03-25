@@ -88,3 +88,6 @@ tshark -r capture.pcap -Y "http" --export-objects http,/tmp/out
 | 4720 | 用户创建 |
 | 4781 | 账户重命名 |
 | 21 (TSLocal) | RDP 登录成功 |
+
+## Windows 事件日志
+- EVTX 分析关注时间戳（TimeCreated / SystemTime）排序关键事件

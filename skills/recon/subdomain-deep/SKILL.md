@@ -53,3 +53,10 @@ metadata:
 | CDN/静态 | cdn.*/static.*/img.* | 低 — 通常无动态内容 |
 
 **优先深入探测**：管理后台 > 开发测试 > 内部系统 > API > Web 应用
+
+## 泛解析处理
+- 通配符 DNS 检测：字典枚举后需内容比对，HTTP 响应对比区分真假子域名
+
+## CNAME/CDN 识别
+- S3 bucket：`s3.amazonaws.com` CNAME 指向
+- 404/bucket 未声明时可能可以注册同名 bucket 接管

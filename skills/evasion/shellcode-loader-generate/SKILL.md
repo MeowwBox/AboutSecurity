@@ -71,3 +71,6 @@ x86_64-w64-mingw32-g++ -o loader.exe loader.cpp
 # Rust
 cargo build --release --target x86_64-pc-windows-gnu
 ```
+
+## Rust Loader 注意事项
+- Rust 错误处理：使用 Result / Option 类型，避免 unwrap panic

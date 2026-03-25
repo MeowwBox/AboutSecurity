@@ -1,0 +1,35 @@
+{
+  "skill_id": "red-team-assessment",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "red team",
+        "渗透测试",
+        "安全评估"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "场景搜索",
+      "keywords": [
+        "全流程",
+        "外网打点",
+        "automation",
+        "pentest"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被CTF召回",
+      "keywords": [
+        "ctf crypto",
+        "ctf pwn"
+      ]
+    }
+  ]
+}

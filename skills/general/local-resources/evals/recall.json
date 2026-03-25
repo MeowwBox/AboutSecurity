@@ -1,0 +1,35 @@
+{
+  "skill_id": "local-resources",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "dictionary",
+        "wordlist",
+        "payload"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "工具搜索",
+      "keywords": [
+        "ffuf",
+        "dirsearch",
+        "hydra",
+        "resource"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被report召回",
+      "keywords": [
+        "报告",
+        "修复建议"
+      ]
+    }
+  ]
+}

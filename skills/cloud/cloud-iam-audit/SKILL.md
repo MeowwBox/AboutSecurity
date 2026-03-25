@@ -72,3 +72,7 @@ aws lambda list-functions 2>&1
 - 云凭据提权核心：能操作 **IAM 本身** 才能提权
 - 临时凭据有过期时间，优先用长期 AK/SK 或创建后门 Access Key
 - 跨账号 Trust Policy 是关键审计点
+
+## 提权路径
+- PassRole + Lambda：lambda invoke 执行函数中嵌入提权代码
+- 权限枚举工具：enumerate-iam、Pacu 等自动化工具扫描可利用权限

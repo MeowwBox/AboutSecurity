@@ -1,0 +1,46 @@
+{
+  "skill_id": "ad-domain-attack",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "ad domain",
+        "域控",
+        "kerberos",
+        "域"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "技术搜索",
+      "keywords": [
+        "kerberoasting",
+        "dcsync",
+        "golden ticket",
+        "bloodhound"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_positive",
+      "description": "认证搜索",
+      "keywords": [
+        "ntlm",
+        "delegation",
+        "acl"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "keyword_negative",
+      "description": "不应被cloud召回",
+      "keywords": [
+        "cloud metadata",
+        "imds"
+      ]
+    }
+  ]
+}

@@ -32,9 +32,9 @@ AboutSecurity/
 
 ## 1.1 概述
 
-每个 YAML 文件声明一个外部命令行工具。Kitsune AI Agent 读取这些定义后，可自动调用对应工具并解析输出。
+每个 YAML 文件声明一个外部命令行工具。AI Agent 读取这些定义后，可自动调用对应工具并解析输出。
 
-**核心原则**：定义好输入（parameters），Kitsune 才能正确调用；定义好输出（output + findings_mapping），Kitsune 才能正确入库。
+**核心原则**：定义好输入（parameters），AI Agent 才能正确调用；定义好输出（output + findings_mapping），AI Agent 才能正确入库。
 
 ## 1.2 文件命名
 
@@ -125,7 +125,7 @@ output:
 # ============================================================
 # 结果映射（必填）
 # ============================================================
-# 将解析出的每条记录映射为 Kitsune Finding 入库
+# 将解析出的每条记录映射为 AI Agent Finding 入库
 findings_mapping:
   type: info                    # Finding 类型
   severity: info                # 严重程度：info / low / medium / high / critical
@@ -139,7 +139,7 @@ constraints:
   timeout: 300s                 # 超时时间（Go duration 格式）
   requires_root: false          # 是否需要 root 权限
   max_concurrent: 2             # 最大并发数
-  proxy_flag: "--proxy"         # 代理参数名（Kitsune 自动注入代理地址）
+  proxy_flag: "--proxy"         # 代理参数名（AI Agent 自动注入代理地址）
 ```
 
 ## 1.4 四种输出解析器
@@ -225,8 +225,8 @@ command_template: |
 ```
 
 **内置变量**（无需在 parameters 中定义）：
-- `{{.OutputFile}}` — Kitsune 自动创建的临时输出文件路径
-- `{{.WorkDir}}` — Kitsune 自动创建的临时工作目录
+- `{{.OutputFile}}` — AI Agent 自动创建的临时输出文件路径
+- `{{.WorkDir}}` — AI Agent 自动创建的临时工作目录
 
 ## 1.7 完整示例
 
@@ -417,7 +417,7 @@ constraints:
 
 每个 Skill 是一个独立目录，包含一个 `SKILL.md` 文件。SKILL.md 使用 **YAML 前言 + Markdown 正文** 的格式，正文是方法论驱动的渗透指南，而非工具调用列表。
 
-Kitsune Agent 通过 `description` 字段匹配用户意图，读取正文作为上下文指导执行。
+AI Agent 通过 `description` 字段匹配用户意图，读取正文作为上下文指导执行。
 
 **核心原则**：
 - **description 是触发器** — Agent 通过 description 决定是否加载此 Skill，务必写清楚触发场景

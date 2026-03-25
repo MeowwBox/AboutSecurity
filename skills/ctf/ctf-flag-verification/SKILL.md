@@ -73,3 +73,8 @@ assert flag.endswith('}'), "Missing } — flag 可能被截断"
 | Flag 含 HTML 实体 | `&amp;` 未解码 | `html.unescape()` |
 | Flag 有换行/空格 | 命令输出含 whitespace | `.strip()` |
 | Flag 格式不对 | 提取了错误数据 | 重新确认表名/文件路径 |
+
+## 字符级验证问题
+- Flag 中间丢失字符时，检查位置 29-32 区域，可能存在偏移错误导致遗漏字符
+- HTML 实体还原：`&lt;` 变成 `<`，`&amp;` 变成 `&`，网页显示与源码不同，需解码还原
+- 示例：`FLAG{a3b<c5d&e7f}` — 渲染后不同于源码，解码后才是正确 flag

@@ -69,3 +69,9 @@ nc host port                    # 连接远程服务
 grep -rniE '(flag|ctf|eno|htb|pico)\{' .
 strings output.bin | grep -iE '\{.*\}'
 ```
+
+## 卡住时策略
+- 回退侦察：robots.txt、.git、备份文件、目录扫描
+
+## 文件类型识别
+- SQLite 数据库文件：用 sqlite3 命令打开，.tables 查询表结构

@@ -1,0 +1,35 @@
+{
+  "skill_id": "ctf-flag-hunting",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "flag hunting",
+        "flag",
+        "getflag",
+        "ctf flag"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "搜索场景",
+      "keywords": [
+        "文件系统",
+        "数据库",
+        "环境变量"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被forensics召回",
+      "keywords": [
+        "volatility",
+        "pcap"
+      ]
+    }
+  ]
+}

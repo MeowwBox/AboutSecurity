@@ -1,0 +1,35 @@
+{
+  "skill_id": "internal-recon",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "internal recon",
+        "内网",
+        "侦察"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "技术搜索",
+      "keywords": [
+        "存活探测",
+        "端口扫描",
+        "域控",
+        "拓扑"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被外网recon召回",
+      "keywords": [
+        "subdomain",
+        "fofa"
+      ]
+    }
+  ]
+}

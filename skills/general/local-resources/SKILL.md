@@ -3,7 +3,7 @@ name: local-resources
 description: 字典库(Dic)、Payload库、POC库的结构和使用方法。使用 ffuf/dirsearch/hydra 等外部工具前必读。
 metadata:
   category: general
-  tags: [dictionary, wordlist, payload, poc, ffuf, dirsearch, hydra, resource]
+  tags: "dictionary,wordlist,payload,poc,ffuf,dirsearch,hydra,resource,字典,工具"
   difficulty: basic
 ---
 

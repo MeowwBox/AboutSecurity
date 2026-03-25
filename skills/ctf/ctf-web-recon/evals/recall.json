@@ -1,0 +1,35 @@
+{
+  "skill_id": "ctf-web-recon",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "ctf recon",
+        "web recon",
+        "信息收集"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "技术搜索",
+      "keywords": [
+        "源码泄露",
+        "备份文件",
+        "robots",
+        "git"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被forensics召回",
+      "keywords": [
+        "volatility",
+        "磁盘"
+      ]
+    }
+  ]
+}

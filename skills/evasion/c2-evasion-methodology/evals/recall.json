@@ -1,0 +1,35 @@
+{
+  "skill_id": "c2-evasion-methodology",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "c2 evasion",
+        "免杀",
+        "beacon",
+        "implant"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "检测绕过",
+      "keywords": [
+        "yara",
+        "sigma",
+        "detection-bypass"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被Web漏洞召回",
+      "keywords": [
+        "sql injection",
+        "file upload"
+      ]
+    }
+  ]
+}

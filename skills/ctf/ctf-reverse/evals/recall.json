@@ -1,0 +1,36 @@
+{
+  "skill_id": "ctf-reverse",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "reverse",
+        "逆向",
+        "ghidra",
+        "gdb"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "工具搜索",
+      "keywords": [
+        "ida",
+        "frida",
+        "angr",
+        "反调试"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被取证召回",
+      "keywords": [
+        "volatility",
+        "pcap"
+      ]
+    }
+  ]
+}

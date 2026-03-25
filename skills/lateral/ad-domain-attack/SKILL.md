@@ -70,3 +70,12 @@ netexec smb 10.0.0.0/24 -u admin -H NTLM_HASH   # PTH
 | 票据攻击 | impacket 套件 |
 | 密码破解 | hashcat |
 | 漏洞利用 | certipy (ADCS), zerologon 脚本 |
+
+## Password Spray 安全策略
+- 检查域密码策略：Lockout duration（锁定时长/冷却时间）
+- 避免账户锁定影响可用性
+- observation window（观察窗口）：了解计数器重置时间
+
+## 工具替代与规避
+- SharpHound 可能被拦截（杀软/EDR），需要替代方案
+- LDAP 查询可远程执行：无需上传工具、不接触目标文件系统

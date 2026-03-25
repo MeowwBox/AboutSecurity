@@ -71,3 +71,7 @@ VirtualProtect(addr, size, PAGE_EXECUTE_READ, &oldProtect);
 char dllName[] = { 0x1a, 0x14, 0x07, ... }; // XOR encrypted
 for (int i = 0; i < sizeof(dllName); i++) dllName[i] ^= KEY;
 ```
+
+## RWX 权限分离
+- 两步操作：先写后执行（W+X 分离），不使用 RWX 一步到位
+- 验证：编译通过、功能正常、验证执行结果

@@ -1,0 +1,34 @@
+{
+  "skill_id": "ctf-osint",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "ctf osint",
+        "开源情报",
+        "geolocation"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "技术搜索",
+      "keywords": [
+        "社交媒体",
+        "dorking",
+        "图片搜索"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被pwn召回",
+      "keywords": [
+        "binary exploit",
+        "overflow"
+      ]
+    }
+  ]
+}

@@ -53,3 +53,6 @@ cat /var/www/html/config.php && cat /var/www/html/.env
 - **假 flag 陷阱**：`FLAG{test}`, `FLAG{this_is_not_the_flag}` 是迷惑项
 - **Flag 位置暗示**：题目描述有时暗示 flag 在哪
 - **拿到 flag 后立即验证**：参考 `ctf-flag-verification` 技能
+
+## 进程信息
+- `/proc/self/cmdline` 可能包含启动命令和参数中传递的 flag

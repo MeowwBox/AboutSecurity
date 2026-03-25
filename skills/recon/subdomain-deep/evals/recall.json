@@ -1,0 +1,35 @@
+{
+  "skill_id": "subdomain-deep",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "subdomain",
+        "子域名",
+        "dns",
+        "枚举"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "技术搜索",
+      "keywords": [
+        "爆破",
+        "crawl",
+        "资产发现"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被Web漏洞召回",
+      "keywords": [
+        "file upload",
+        "deserialization"
+      ]
+    }
+  ]
+}

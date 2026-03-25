@@ -85,3 +85,6 @@ grep -rniE '(flag|ctf)\{' .
 | Wayback Machine | 历史网页快照 |
 | whatsmyname.app | 用户名跨平台枚举 |
 | Google Lens | 裁剪区域反向图搜 |
+
+## Google Dorking
+- 检查 robots.txt、sitemap、.git 等信息泄露源

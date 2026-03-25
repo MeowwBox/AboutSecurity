@@ -1,0 +1,37 @@
+{
+  "skill_id": "recon-full",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "recon",
+        "侦察",
+        "subdomain",
+        "port",
+        "fingerprint"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "场景搜索",
+      "keywords": [
+        "攻击面",
+        "资产发现",
+        "扫描",
+        "渗透测试"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被后渗透召回",
+      "keywords": [
+        "mimikatz",
+        "lateral movement"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "skill_id": "ctf-crypto",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "ctf crypto",
+        "密码学",
+        "rsa",
+        "aes"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "算法搜索",
+      "keywords": [
+        "ecc",
+        "lattice",
+        "prng"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被Web密码学召回",
+      "keywords": [
+        "sql injection",
+        "file upload"
+      ]
+    }
+  ]
+}

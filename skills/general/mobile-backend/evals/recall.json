@@ -1,0 +1,35 @@
+{
+  "skill_id": "mobile-backend",
+  "recall_tests": [
+    {
+      "id": 1,
+      "type": "keyword_positive",
+      "description": "核心关键词",
+      "keywords": [
+        "mobile",
+        "移动安全",
+        "app"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "keyword_positive",
+      "description": "场景搜索",
+      "keywords": [
+        "ios",
+        "android",
+        "业务逻辑",
+        "支付"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "keyword_negative",
+      "description": "不应被cloud召回",
+      "keywords": [
+        "cloud iam",
+        "metadata"
+      ]
+    }
+  ]
+}
