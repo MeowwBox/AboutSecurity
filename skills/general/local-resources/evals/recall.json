@@ -41,7 +41,7 @@
       "expect_tool_calls": [
         {
           "tool": "list_skills",
-          "keyword_contains": "resource|字典|dictionary|local|wordlist"
+          "keyword_contains": "resource|字典|dictionary|local|wordlist|ffuf|payload"
         },
         {
           "tool": "read_skill",
