@@ -3,23 +3,22 @@ name: msf-oneshot
 description: "Metasploit Framework 一行式调用方法论。当需要利用操作系统级漏洞（如 EternalBlue/MS17-010）、数据库远程漏洞（如 PostgreSQL/MySQL RCE）、网络服务漏洞（SMB/RDP/FTP）、或需要生成 payload/后渗透操作时使用。MSF 拥有 2000+ exploit 模块，覆盖 Windows/Linux 操作系统、数据库、网络设备的远程利用。本技能教你用 msfconsole -x 一行式模式调用 MSF，避免交互式 CLI 的复杂性。任何涉及 metasploit、msfconsole、meterpreter、系统级 exploit、远程溢出、payload 生成的场景都应使用此技能"
 metadata:
   tags: "metasploit,msf,msfconsole,meterpreter,exploit,eternalblue,ms17-010,payload,远程利用,操作系统漏洞,数据库漏洞,后渗透,msfvenom"
-  category: "exploit"
+  category: "tool"
 ---
 
 # Metasploit Framework 一行式调用方法论
 
 MSF 是交互式 CLI 工具，直接用 msfconsole 交互对 AI Agent 不友好。核心技巧：**用 `msfconsole -q -x` 一行式模式**，把所有命令串联在一条 bash 命令里执行。
 
-## ⛔ 重要约束
+## 使用前须知
 
-- msfconsole 启动较慢（10-30 秒），预期等待
-- 一行式命令执行完会自动退出，无法维持 session
-- 如需维持 meterpreter session，使用 handler 模式（见 Phase 4）
-- 比赛中优先用更快的工具（curl/python 脚本），MSF 作为备选
+msfconsole 启动需要 10-30 秒加载模块库，这是正常现象。一行式（`-x`）命令执行完会自动退出，无法维持 session——如果需要保持 meterpreter 连接，参考 Phase 4 的 handler 模式。
 
-## ⛔ 深入参考（必读）
+对于简单的 Web 漏洞（SQLi/XSS/SSRF），curl 或 python 脚本更快更直接；MSF 的核心价值在于 OS 级 exploit（EternalBlue 等）和标准化 payload 生成，这些场景下 MSF 无可替代。
 
-- ⛔**必读** 常用 exploit 模块速查表和 payload 生成 → `read_skill(id="msf-oneshot", path="references/msf-modules.md")`
+## 参考资料
+
+常用 exploit 模块速查表和 payload 生成指南 → `read_skill(id="msf-oneshot", path="references/msf-modules.md")`
 
 ---
 

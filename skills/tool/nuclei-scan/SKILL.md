@@ -3,18 +3,18 @@ name: nuclei-scan
 description: "Nuclei 漏洞扫描工具使用方法论。当需要对目标进行已知漏洞扫描、CVE 验证、批量 PoC 检测时使用。Nuclei 拥有社区维护的 9000+ 模板，覆盖 CVE、默认口令、配置错误、信息泄露等。任何涉及 nuclei 扫描、CVE 批量验证、PoC 检测、漏洞模板搜索的场景都应使用此技能。也适用于需要从 nuclei 模板中提取 payload 用于手动利用的场景"
 metadata:
   tags: "nuclei,scan,cve,poc,vulnerability,漏洞扫描,模板,template,批量检测,projectdiscovery"
-  category: "exploit"
+  category: "tool"
 ---
 
 # Nuclei 漏洞扫描方法论
 
 Nuclei 是 ProjectDiscovery 开源的基于模板的漏洞扫描器。它的核心价值：**社区维护的模板库**，每个模板都是经过验证的 PoC，比自己构造 payload 更可靠。
 
-## ⛔ 重要约束
+## 扫描策略
 
-- **比赛中严禁全量扫描**（耗时 10-30 分钟，浪费比赛时间）
-- 始终通过 `-t`（指定模板目录）或 `-tags`（指定标签）缩小扫描范围
-- Nuclei 结果可能有误报，关键漏洞必须手动验证
+Nuclei 有 9000+ 模板，不加限制的全量扫描（`nuclei -u target`）需要 10-30 分钟——在比赛中这是致命的时间浪费。通过 `-t`（指定模板目录）或 `-tags`（指定标签）缩小范围，通常几十秒内就能完成精准扫描。
+
+另外，Nuclei 的模板匹配并非 100% 准确，关键漏洞发现后应手动复现确认，避免在误报上浪费时间。
 
 ## Phase 1: 精准扫描（推荐）
 
