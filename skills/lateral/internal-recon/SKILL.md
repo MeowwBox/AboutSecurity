@@ -13,6 +13,7 @@ metadata:
 ## ⛔ 深入参考（必读）
 
 - 存活探测命令、端口→服务→价值映射表、域控/数据库定位 → [references/network-mapping.md](references/network-mapping.md)
+- fscan 详细用法（弱口令爆破、POC 检测、代理扫描）→ 加载 `fscan-scan` 技能
 
 ## Phase 1: 当前位置分析
 
@@ -25,16 +26,24 @@ ipconfig /all && route print && arp -a && net view /domain
 
 **关键判断**：多网卡=跳板 | DNS→内网IP=域环境 | ARP表大=活跃网段
 
-## Phase 2: 存活主机发现
+## Phase 2: 存活主机发现（fscan 优先）
 ```bash
-nmap -sn 10.0.0.0/24          # ICMP ping
-nmap -PR -sn 10.0.0.0/24      # ARP（同网段最可靠）
-fscan -h 10.0.0.0/24 -nopoc   # 快速全面
+# fscan 一把梭（存活+端口+服务+弱口令+漏洞，速度远超 nmap）
+fscan -h 10.0.0.0/24 -nopoc          # 快速存活+端口
+fscan -h 10.0.0.0/24                  # 全量（含 POC 检测+弱口令）
+
+# nmap 补充（fscan 不可用时降级）
+nmap -sn 10.0.0.0/24                  # ICMP ping
+nmap -PR -sn 10.0.0.0/24             # ARP（同网段最可靠）
 ```
 
 ## Phase 3: 端口扫描（聚焦关键端口）
 ```bash
-nmap -sT -p 22,80,135,139,443,445,1433,3306,3389,5432,5985,6379,8080,9200 TARGETS
+# fscan 指定端口（推荐，速度快且自动识别服务）
+fscan -h TARGETS -p 22,80,135,139,443,445,1433,3306,3389,5432,5985,6379,8080,9200
+
+# nmap 深度识别（需要服务版本/NSE 脚本时用）
+nmap -sT -sV -p 22,80,445,3389 TARGETS
 ```
 
 **高价值端口**：88(域控) | 445(SMB) | 3389(RDP) | 1433(MSSQL) | 6379(Redis)
