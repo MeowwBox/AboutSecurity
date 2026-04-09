@@ -75,6 +75,24 @@ browser_press_key(key='Enter')
 
 ---
 
+## Phase 2.5: 输出完整性验证
+
+读取终端输出后，**必须检查输出是否完整**：
+
+### 判断不完整的信号
+- 配置文件只显示了最后 1-2 行（如 resolv.conf 只有 options 行，缺少 nameserver/search）
+- 输出只有提示符，没有任何命令结果
+- 输出看起来是中间片段（没有起始行）
+
+### 修复方法
+发现输出可能不完整时，**立即用重定向法重试**：
+```bash
+command > /tmp/verify.txt 2>&1 && cat /tmp/verify.txt
+```
+不要继续基于不完整输出做决策。
+
+---
+
 ## Phase 3: 输出读取（核心难点）
 
 ### ⭐ 方法 1: xterm-rows innerText（最可靠）

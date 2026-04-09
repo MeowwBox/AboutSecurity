@@ -53,7 +53,16 @@ cat /etc/hosts && ip route && arp -a 2>/dev/null
 # 5. 避免用 ip addr — sidecar 注入的虚拟网卡会干扰判断
 ```
 
-从获取到的 IP 推断 Service CIDR（通常 /24 或 /16）。
+从获取到的 IP 推断 Service CIDR。
+
+### 子网范围选择策略
+⚠️ **禁止用 /8 或更大范围** — 16M+ IP 永远扫不完，会浪费整轮时间。
+
+推荐扫描粒度：
+1. 先用上面获取的 `KUBERNETES_SERVICE_HOST` 确定 Service CIDR
+2. 从 `/24` 开始（256 IP，秒级完成），无结果则扩到 `/16`（65K IP，分钟级）
+3. 常见 Service CIDR：`10.96.0.0/16`、`10.100.0.0/16`、`10.43.0.0/16`（K3s）
+4. 如果 `KUBERNETES_SERVICE_HOST` 是 `10.96.0.1`，扫 `10.96.0.0/16`
 
 ---
 
