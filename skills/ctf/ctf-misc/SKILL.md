@@ -21,6 +21,7 @@ metadata:
 - 游戏与VM Part2（ML权重/WebSocket/Flask/LoRA/De Bruijn） → [references/games-and-vms-2.md](references/games-and-vms-2.md)
 - 游戏与VM Part3（memfd/博弈/ROM切换/Benford/BuildKit） → [references/games-and-vms-3.md](references/games-and-vms-3.md)
 - Linux 提权（sudo通配符/NFS/SSH隧道/PostgreSQL RCE） → [references/linux-privesc.md](references/linux-privesc.md)
+- 高级编码（Verilog HDL/Gray码/Manchester编码/BPF字节码） → [references/encodings-advanced.md](references/encodings-advanced.md)
 
 ---
 

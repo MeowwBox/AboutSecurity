@@ -24,6 +24,7 @@
 - [Subdomain Takeover](#subdomain-takeover)
 - [Apache mod_status Information Disclosure + Session Forging (29c3 CTF 2012)](#apache-mod_status-information-disclosure--session-forging-29c3-ctf-2012)
 - [JA4/JA4H TLS and HTTP Fingerprint Matching (BSidesSF 2026)](#ja4ja4h-tls-and-http-fingerprint-matching-bsidessf-2026)
+- [Approval/Workflow System Broken Access Control](#approvalworkflow-system-broken-access-control)
 
 For JWT/JWE token attacks, see [auth-jwt.md](auth-jwt.md). For OAuth/OIDC, SAML, CI/CD credential theft, and infrastructure auth attacks, see [auth-infra.md](auth-infra.md).
 
@@ -654,3 +655,41 @@ headers = collections.OrderedDict([
 - `curl -v --ciphers <list> --tls-max 1.2` to manually control TLS parameters
 
 **References:** BSidesSF 2026 "cloudpear"
+
+---
+
+## Approval/Workflow System Broken Access Control
+
+**Pattern:** Enterprise apps with role-based workflows (合同审批/OA/工单/报销) often have admin-only actions (approve/reject/review) that are "temporarily opened" for integration testing but never properly locked down.
+
+**Key signals:**
+- JS/HTML comments: "临时开放", "TODO: 加回权限验证", "API调试模式", "集成测试"
+- Role distinction: employee submits, admin approves
+- Dashboard shows different views per role
+
+**Where the approval endpoint hides (not always a separate file):**
+1. **Same-page POST** — approval action is embedded in dashboard.php via `action` parameter:
+   ```
+   POST /dashboard.php
+   action=approve&contract_id=1
+   ```
+2. **JS/AJAX in dashboard source** — `$.post('/api/admin/approve', {id: 1})` buried in 6000+ bytes of dashboard HTML/JS
+3. **PHP include chain** — dashboard.php includes contracts.php which includes approve logic. The endpoint path is only visible after reading the full include tree
+4. **RESTful hidden route** — `POST /contracts/1/approve` or `PATCH /contracts/1 {"status":"approved"}`
+
+**Attack flow:**
+1. Login as employee (low-priv user)
+2. Read all PHP/JS source (via LFI or direct access)
+3. **Grep source for**: `approve`, `reject`, `action`, `status`, `审批`, `$.ajax`, `fetch(`, `XMLHttpRequest`, `form action=`
+4. Find the exact endpoint + parameters from source code
+5. Call the approval endpoint with employee session (vertical privilege escalation)
+6. Check if approving a "sensitive" document (like system-init-config) reveals the flag
+
+**Common action parameter names:**
+```
+action=approve | action=reject | action=review
+do=approve | op=approve | act=approve | type=approve
+status=approved | status=1 | approved=true
+```
+
+**Critical mistake to avoid:** Do NOT brute-force API paths when you already have source code. Read the source, extract the exact endpoint, then call it directly.
