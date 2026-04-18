@@ -21,6 +21,11 @@ metadata:
 - ZKP 与约束求解（Z3/图着色/Groth16/Shamir SSS） → [references/zkp-and-advanced.md](references/zkp-and-advanced.md)
 - 历史密码（Lorenz SZ40/42/Book Cipher） → [references/historical.md](references/historical.md)
 - 奇异代数结构（辫群DH/热带半环/FPE/Goldwasser-Micali） → [references/exotic-crypto.md](references/exotic-crypto.md)
+- 格与LWE攻击（LLL/BKZ/Babai CVP/Coppersmith格/NTRU） → [references/lattice-and-lwe.md](references/lattice-and-lwe.md)
+- 现代密码攻击续（Blum-Goldwasser/Hash长度扩展/RC4统计） → [references/modern-ciphers-2.md](references/modern-ciphers-2.md)
+- 现代密码攻击Part3（自定义Hash反转/CRC32爆破/HMAC时序） → [references/modern-ciphers-3.md](references/modern-ciphers-3.md)
+- RSA专项技术（p=q绕过/CRT立方根/多素数分解/部分密钥） → [references/rsa-attacks-2.md](references/rsa-attacks-2.md)
+- 流密码攻击（LFSR/RC4第二字节偏差/Salsa20/ChaCha20） → [references/stream-ciphers.md](references/stream-ciphers.md)
 
 ---
 

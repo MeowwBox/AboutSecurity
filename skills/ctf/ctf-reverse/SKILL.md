@@ -23,6 +23,12 @@ metadata:
 - 逆向模式（校验/编码/迷宫/虚拟机/游戏引擎） → [references/patterns.md](references/patterns.md)
 - CTF 逆向模式 Part1（自定义加密/矩阵/Brainfuck JIT） → [references/patterns-ctf.md](references/patterns-ctf.md)
 - CTF 逆向模式 Part2（约束求解/侧信道/混淆变换） → [references/patterns-ctf-2.md](references/patterns-ctf-2.md)
+- CTF 逆向模式 Part3（Z3布尔电路/滑窗Popcount/多步加密） → [references/patterns-ctf-3.md](references/patterns-ctf-3.md)
+- 运行时修补与Oracle（反分析Patch/多阶段Shellcode） → [references/patterns-runtime.md](references/patterns-runtime.md)
+- CTF反分析实战（SIGILL/SIGFPE/ptrace时序/花指令） → [references/anti-analysis-ctf.md](references/anti-analysis-ctf.md)
+- 仿真与侧信道工具（Qiling/Triton/Unicorn/指令计数） → [references/tools-emulation.md](references/tools-emulation.md)
+- 硬件与特殊架构（HD44780 LCD/RISC-V/FPGA/自定义ISA） → [references/platforms-hardware.md](references/platforms-hardware.md)
+- 逆向实战笔记（二进制类型速查/反调试绕过/常用patch） → [references/field-notes.md](references/field-notes.md)
 
 ---
 

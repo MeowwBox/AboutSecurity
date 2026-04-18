@@ -21,6 +21,9 @@ metadata:
 - 通用隐写术（PDF/SVG/PNG/文件叠加/终端图形） → [references/steganography.md](references/steganography.md)
 - 图像隐写术（JPEG DQT/BMP位平面/F5检测/调色板） → [references/stego-image.md](references/stego-image.md)
 - 高级隐写术（FFT/DTMF/音频/视频帧/JPEG XL） → [references/stego-advanced.md](references/stego-advanced.md)
+- 高级隐写术2（视频帧累积/反转音频/多层PNG/EXIF链） → [references/stego-advanced-2.md](references/stego-advanced-2.md)
+- 高级磁盘取证（删除分区恢复/ZFS/LVM Thin/APFS快照） → [references/disk-advanced.md](references/disk-advanced.md)
+- 外设捕获分析（USB HID鼠标绘图/键盘捕获解码/蓝牙） → [references/peripheral-capture.md](references/peripheral-capture.md)
 - 硬件信号（VGA/HDMI/DisplayPort/功率侧信道/键盘声学） → [references/signals-and-hardware.md](references/signals-and-hardware.md)
 - 3D 打印取证（PrusaSlicer/G-code/QOIF） → [references/3d-printing.md](references/3d-printing.md)
 

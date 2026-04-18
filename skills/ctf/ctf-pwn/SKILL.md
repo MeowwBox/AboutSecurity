@@ -22,6 +22,18 @@ metadata:
 | KASLR / KPTI / SMEP / SMAP / FGKASLR 绕过 | [references/kernel-bypass.md](references/kernel-bypass.md) |
 | 自定义VM / JIT / 类型混淆 / FSOP / Windows / ARM | [references/advanced-pwn.md](references/advanced-pwn.md) |
 | Python沙箱 / FUSE / Busybox / 受限Shell | [references/sandbox-escape.md](references/sandbox-escape.md) |
+| 栈溢出基础 / 结构体覆写 / 有符号整数 / Canary | [references/overflow-basics.md](references/overflow-basics.md) |
+| ROP链构造 / ret2csu / XOR编码 / shellcode | [references/rop-and-shellcode.md](references/rop-and-shellcode.md) |
+| 高级ROP / 双栈迁移 / UTF-8 SROP / RETF绕seccomp | [references/rop-advanced.md](references/rop-advanced.md) |
+| 堆技术(House of Apple2/Einherjar/自定义分配器) | [references/heap-techniques.md](references/heap-techniques.md) |
+| 堆FILE结构(fastbin→stdout/vtable劫持/glibc 2.24+) | [references/heap-fsop.md](references/heap-fsop.md) |
+| 内核基础(环境/堆喷结构/栈溢出/提权原语) | [references/kernel.md](references/kernel.md) |
+| 内核技术(tty_struct/userfaultfd/SLUB/Panic泄漏) | [references/kernel-techniques.md](references/kernel-techniques.md) |
+| 高级利用2(字节码/io_uring/整数截断/GC) | [references/advanced-exploits-2.md](references/advanced-exploits-2.md) |
+| 高级利用3(栈变量重叠/1字节溢出/GOT覆写) | [references/advanced-exploits-3.md](references/advanced-exploits-3.md) |
+| 高级利用4(Windows SEH/ARM Thumb/Forth/GF(2)) | [references/advanced-exploits-4.md](references/advanced-exploits-4.md) |
+| 高级利用5(Chip-8模拟器/浮点Canary/Bloom Filter) | [references/advanced-exploits-5.md](references/advanced-exploits-5.md) |
+| Pwn 实战笔记(堆速查/利用备忘/常用命令) | [references/field-notes.md](references/field-notes.md) |
 
 ### 大文件目录索引 (>300行，建议先看目录定位)
 
