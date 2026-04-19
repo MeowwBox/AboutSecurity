@@ -4,7 +4,7 @@
 
 ## 核心模块
 
-**Skills/** — 170+ 个技能方法论，覆盖侦察到后渗透全链路
+**Skills/** — 190+ 个技能方法论，覆盖侦察到后渗透全链路
 
 - `cloud/` — 云环境（Docker逃逸、K8s攻击链、AWS IAM、阿里云、腾讯云、Serverless）
 - `ctf/` — CTF竞赛（Web解题、逆向、PWN、密码学、取证、AI/ML）
@@ -21,6 +21,8 @@
 - `postexploit/` — 后渗透（Linux/Windows提权、持久化、凭据窃取）
 - `recon/` — 侦察（子域名枚举、被动信息收集、JS API提取）
 - `threat-intel/` — 威胁情报（IOC对抗、APT模拟、威胁猎杀规避）🆕
+- `ai-security/` — AI 安全（Prompt 注入、模型越狱、Prompt 泄露、Agent 攻击链）
+- `code-audit/` — 代码审计（PHP 8-Skill 体系、Java 8-Skill 体系，覆盖注入/文件/序列化/认证/框架/利用链）
 - `tool/` — 工具使用（fscan、nuclei、sqlmap、msfconsole、ffuf、hashcat）
 
 **Dict/** — 字典库
