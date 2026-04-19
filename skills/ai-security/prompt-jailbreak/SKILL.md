@@ -8,7 +8,7 @@ metadata:
 
 # AI Prompt 越狱方法论
 
-> **相关 skill**：系统提示泄露 → `prompt-leak`；间接提示注入 → `prompt-injection`；AI 基础设施攻击 → `ai-infrastructure-attack`
+> **相关 skill**：系统提示泄露 → `prompt-leak`；间接提示注入 → `prompt-injection`；AI 基础设施攻击 → `ai-infrastructure-attack`；角色逃逸与身份安全 → `ai-identity-security`
 
 ## 概述
 

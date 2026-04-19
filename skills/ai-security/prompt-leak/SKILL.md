@@ -8,7 +8,7 @@ metadata:
 
 # AI System Prompt 泄露方法论
 
-> **相关 skill**：越狱绕过安全对齐 → `prompt-jailbreak`；间接提示注入 → `prompt-injection`
+> **相关 skill**：越狱绕过安全对齐 → `prompt-jailbreak`；间接提示注入 → `prompt-injection`；AI 数据安全 → `ai-data-security`
 
 ## 概述
 

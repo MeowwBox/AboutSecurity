@@ -8,7 +8,7 @@ metadata:
 
 # AI Prompt 间接注入方法论
 
-> **相关 skill**：直接越狱 → `prompt-jailbreak`；系统提示泄露 → `prompt-leak`；AI 基础设施攻击 → `ai-infrastructure-attack`
+> **相关 skill**：直接越狱 → `prompt-jailbreak`；系统提示泄露 → `prompt-leak`；AI 基础设施攻击 → `ai-infrastructure-attack`；MCP 协议安全 → `mcp-security`；Agent 系统安全 → `agent-security`；思维链注入 → `cot-injection`；跨域攻击链 → `cross-domain-attack-chain`
 
 ## 概述
 
