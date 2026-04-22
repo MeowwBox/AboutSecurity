@@ -1,5 +1,3 @@
-<!-- Source: HackTricks, hardware-physical-access/firmware-analysis/README.md -->
-
 # 固件分析技术详细参考
 
 ## 固件基础概念
