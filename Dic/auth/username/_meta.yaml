@@ -5,13 +5,13 @@ tags: username,用户名,account,账户,枚举,enum,登录名
 files:
 - name: cn-email.txt
   lines: 309
-  description: 中国常见邮箱地址格式的用户名（含163/qq/gmail等后缀）
-  usage: 中国目标的邮箱账户枚举与登录爆破
+  description: 中国常见测试邮箱地址格式的用户名（含163/qq/gmail等后缀）
+  usage: 中国目标的测试邮箱账户枚举与登录爆破
   tags: email,邮箱,中国邮箱,cn-email
 - name: cn-phone.txt
   lines: 345
-  description: 中国常见手机号码格式
-  usage: 以手机号为用户名的系统登录爆破
+  description: 中国常见测试手机号码格式
+  usage: 以测试手机号为用户名的系统登录爆破
   tags: phone,手机号,中国手机,mobile
 - name: username-top10000.txt
   lines: 10415
