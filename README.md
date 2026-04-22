@@ -4,7 +4,7 @@
 
 ## 核心模块
 
-**Skills/** — 190+ 个技能方法论，覆盖侦察到后渗透全链路
+**Skills/** — 184 个技能方法论，覆盖侦察到后渗透全链路
 
 - `cloud/` — 云环境（Docker逃逸、K8s攻击链、AWS IAM、阿里云、腾讯云、Serverless）
 - `ctf/` — CTF竞赛（Web解题、逆向、PWN、密码学、取证、AI/ML）
@@ -37,12 +37,22 @@
 
 - `sqli/`、`xss/`、`ssrf/`、`xxe/`、`lfi/`、`rce/`、`upload/`、`cors/`、`hpp/`、`format/`、`ssi/`、`email/`、`access-bypass/`、`prompt-injection/`
 
+**Vuln/** — 600+ 条漏洞库，按产品分类的结构化漏洞数据
+
+- `ai/` — AI 相关（ComfyUI、Dify、LangFlow、AnythingLLM 等）
+- `cloud/` — 云平台（AWS API Gateway 等）
+- `middleware/` — 中间件（ActiveMQ、Nacos、Grafana、Jenkins、RocketMQ 等 394 条）
+- `network/` — 网络设备（安恒、锐捷等）
+- `web/` — Web 应用（1Panel、WordPress、OFBiz 等）
+
 **Tools/** — 外部工具声明式配置（程序化编排框架使用）
 
 - `scan/`、`fuzz/`、`osint/`、`poc/`、`brute/`、`postexploit/`
 - 详见 [Tools/README.md](./Tools/README.md)
 
 > **Tools/ vs skills/tool/ 的区别**：`Tools/` 下的 YAML 是面向**程序化工具编排框架**的结构化接口定义（参数类型、命令模板、输出解析器），适合自动化引擎调用；`skills/tool/` 下的 SKILL.md 是面向 **LLM Agent** 的自然语言方法论（何时用、怎么选参数、结果怎么判断）。如果你只使用 Claude Code 等 LLM Agent，关注 `skills/tool/` 即可。
+
+> **skills/exploit/product-vuln/ vs Vuln/ 的区别**：两者针对同一产品但定位不同。`product-vuln/` 下的 Skill 是**方法论层**——攻击决策树、多 CVE 优先级编排、后利用技巧（提权/持久化/凭据提取）；`Vuln/` 下的条目是**数据层**——每条漏洞的影响版本、PoC 代码、具体利用步骤。简单来说：**Skill 告诉你"怎么打"，Vuln 告诉你"用什么打"**。AI 会先读 Skill 了解整体攻击面，再调 Vuln 拿具体 PoC 去执行。
 
 ## 快速开始
 
@@ -55,7 +65,7 @@ git clone https://github.com/your-org/AboutSecurity.git
 ### 2. 同步 Skills 到你的项目
 
 ```bash
-# 将 190+ 安全技能同步到你的工作项目中
+# 将 184 安全技能同步到你的工作项目中
 cd AboutSecurity
 ./scripts/sync-claude-skills.sh --target /path/to/your-project
 
