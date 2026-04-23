@@ -8,8 +8,6 @@ metadata:
 
 # AI System Prompt 泄露方法论
 
-> **相关 skill**：越狱绕过安全对齐 → `prompt-jailbreak`；间接提示注入 → `prompt-injection`；AI 数据安全 → `ai-data-security`
-
 ## 概述
 
 System Prompt（系统提示词）是 LLM 应用的"灵魂"——定义了 AI 的身份、能力边界、可用工具、业务逻辑和安全规则。泄露系统提示词可以：

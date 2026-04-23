@@ -11,9 +11,6 @@ metadata:
 ---
 
 # Java 注入类漏洞源码审计
-
-> **相关 skill**: 审计总流程 → `java-audit-pipeline` | SQL 注入黑盒利用 → `sql-injection-methodology` | SSRF 黑盒利用 → `ssrf` | LDAP 黑盒利用 → `ldap-injection`
-
 本 skill 聚焦源码层面判断"注入是否成立"，核心是验证 Source→Sink 路径上的过滤是否充分。构造 payload、绕 WAF 等运行时利用技术属于对应黑盒 exploit skill 范畴。
 
 ## 深入参考

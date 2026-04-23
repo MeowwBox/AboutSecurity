@@ -131,7 +131,7 @@ export TENCENTCLOUD_SESSION_TOKEN="Token"
 tccli sts GetCallerIdentity
 ```
 
-获取云凭据后，参考 `cloud-iam-audit` 技能进行提权评估。
+获取云凭据后，进行 IAM 提权评估。
 
 ## 注意事项
 - **IMDSv2** 是 AWS 对元数据 SSRF 的主要防护——纯 SSRF 基本无法利用

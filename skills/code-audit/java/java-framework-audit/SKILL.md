@@ -12,9 +12,6 @@ metadata:
 ---
 
 # Java 框架特定漏洞源码审计
-
-> **相关 skill**: 审计总流程 → `java-audit-pipeline` | 反序列化深入 → `java-serialization-audit` | Shiro/认证配置 → `java-auth-config-audit` | 利用链组装 → `java-exploit-chain`
-
 框架漏洞的本质分两类: **框架自身缺陷**（已知 CVE，升级即修）和**框架误用**（开发者对框架安全机制理解不足导致的配置/编码缺陷）。本 skill 关注的核心问题是: 被审计项目的代码如何触发这些已知的框架缺陷模式。
 
 ## 深入参考

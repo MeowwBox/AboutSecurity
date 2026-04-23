@@ -12,9 +12,6 @@ metadata:
 ---
 
 # Java 序列化类漏洞源码审计
-
-> **相关 skill**: 审计总流程 → `java-audit-pipeline` | 框架审计中 FastJSON/Jackson 反序列化 → `java-framework-audit` | 反序列化黑盒利用 → `deserialization-methodology` | XXE 黑盒利用 → `xxe-injection-methodology`
-
 本 skill 聚焦源码层面判断"反序列化/XXE/SSTI 是否成立"，核心工作是：白盒确认反序列化入口点、追踪数据来源、评估 classpath 中可用 Gadget 链、验证 XML 解析器安全配置、检查模板引擎渲染上下文。构造 exploit payload、远程利用链发送等运行时黑盒技术属于对应 exploit skill 范畴。
 
 ## 深入参考

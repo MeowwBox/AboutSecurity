@@ -209,10 +209,3 @@ owneredit.py -dc-ip DC_IP DOMAIN/user:pass \
 | impacket-addcomputer | 添加机器账户 |
 | PKINITtools | 证书→TGT |
 | PowerView | Windows 端 ACL 操作 |
-
-## 关联技能
-
-- **AD 域攻击方法论** → `/skill:ad-domain-attack`
-- **Kerberoasting** → `/skill:kerberoast-attack`
-- **ADCS 证书攻击** → `/skill:adcs-certipy-attack`
-- **NTLM 中继攻击** → `/skill:ntlm-relay-attack`

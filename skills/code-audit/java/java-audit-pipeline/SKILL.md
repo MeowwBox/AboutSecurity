@@ -11,9 +11,6 @@ metadata:
 ---
 
 # Java 白盒审计总方法论
-
-> **相关 skill**: 注入类 → `java-injection-audit` | 文件类 → `java-file-audit` | 前端类 → `java-frontend-audit` | 序列化类 → `java-serialization-audit` | 认证配置 → `java-auth-config-audit` | 框架特定 → `java-framework-audit` | 利用链 → `java-exploit-chain`
-
 白盒审计在源码层面发现漏洞，关注"代码为什么不安全"。发现漏洞后的实际利用技术（构造 payload、绕过 WAF、Gadget Chain 武器化）属于黑盒 exploit skill 范畴。Java 项目常以编译后的 .class / JAR / WAR 形式交付，需先完成反编译还原源码（详见 decompile-strategy.md）。
 
 ## 深入参考
@@ -73,18 +70,18 @@ metadata:
 ## Phase 4: 分类漏洞审计
 
 按 Sink 类型分派到对应子 skill 进行深入审计:
-- 注入类（SQL / CMD / LDAP / SpEL / OGNL / EL）→ `java-injection-audit`
-- 文件类（读取 / 上传 / 写入 / 路径穿越）→ `java-file-audit`
-- 前端类（XSS / CSRF / 重定向）→ `java-frontend-audit`
-- 序列化类（Java 原生反序列化 / FastJSON / Jackson / XXE）→ `java-serialization-audit`
-- 认证配置类（越权 / 弱加密 / 信息泄露 / Actuator 暴露）→ `java-auth-config-audit`
-- 框架特定漏洞（已知 CVE、Spring / Struts2 / Shiro 配置缺陷）→ `java-framework-audit`
+- 注入类（SQL / CMD / LDAP / SpEL / OGNL / EL）
+- 文件类（读取 / 上传 / 写入 / 路径穿越）
+- 前端类（XSS / CSRF / 重定向）
+- 序列化类（Java 原生反序列化 / FastJSON / Jackson / XXE）
+- 认证配置类（越权 / 弱加密 / 信息泄露 / Actuator 暴露）
+- 框架特定漏洞（已知 CVE、Spring / Struts2 / Shiro 配置缺陷）
 
 ## Phase 5: 报告与利用链组装
 
 **严重度评分**: `Score = R * 0.40 + I * 0.35 + C * 0.25`（R=可达性, I=影响范围, C=利用复杂度，各 0-3 分）
 
-将同一目标上的多个漏洞组合为利用链（如: Actuator 信息泄露→Shiro 认证绕过→SpEL 注入→RCE），详见 `java-exploit-chain`。
+将同一目标上的多个漏洞组合为利用链（如: Actuator 信息泄露→Shiro 认证绕过→SpEL 注入→RCE）。
 
 ## 审计质量检查清单
 

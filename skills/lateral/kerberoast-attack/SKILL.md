@@ -171,10 +171,3 @@ john --format=krb5asrep asrep_hashes.txt --wordlist=wordlist.txt
 | Rubeus | Windows 端 Kerberoasting（含 OPSEC 选项） |
 | hashcat | GPU 离线破解 |
 | BloodHound | 识别高价值 SPN 账户 |
-
-## 关联技能
-
-- **AD 域攻击方法论** → `/skill:ad-domain-attack`
-- **ADCS 证书攻击** → `/skill:adcs-certipy-attack`
-- **Hashcat 破解** → `/skill:hashcat-crack`
-- **NTLM 中继攻击** → `/skill:ntlm-relay-attack`

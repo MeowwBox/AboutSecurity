@@ -11,9 +11,6 @@ metadata:
 ---
 
 # PHP 前端交互类漏洞源码审计
-
-> **相关 skill**: 审计总流程 → `php-audit-pipeline` | XSS 黑盒利用 → `xss-methodology` | CSRF 黑盒利用 → `csrf-methodology`
-
 本 skill 聚焦源码层面判断"前端安全漏洞是否成立"，核心是验证用户可控数据在 HTTP 响应中的输出是否安全。构造 payload、绕 WAF 等运行时利用技术属于对应黑盒 exploit skill 范畴。
 
 ## 深入参考

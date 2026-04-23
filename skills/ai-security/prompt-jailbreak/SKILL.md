@@ -8,8 +8,6 @@ metadata:
 
 # AI Prompt 越狱方法论
 
-> **相关 skill**：系统提示泄露 → `prompt-leak`；间接提示注入 → `prompt-injection`；AI 基础设施攻击 → `ai-infrastructure-attack`；角色逃逸与身份安全 → `ai-identity-security`
-
 ## 概述
 
 Prompt 越狱 (Jailbreak) 是指通过精心构造的输入，绕过 LLM 的安全对齐 (alignment) 和内容过滤策略，使模型执行原本被禁止的行为。与 prompt injection 不同，jailbreak 的目标是**直接操纵模型本身的行为边界**。

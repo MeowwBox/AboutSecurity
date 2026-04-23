@@ -175,10 +175,3 @@ Cobalt Strike Sleep Mask 原理：
 | Sleep Mask Kit | CS sleep 加密 | 红 |
 | SysWhispers3 | 直接 syscall（绕 hook）| 红 |
 | NanoDump | LSASS 低检测 dump | 红 |
-
-## 关联技能
-
-- **后渗透 Windows** → `/skill:post-exploit-windows`
-- **C2 免杀方法论** → `/skill:c2-evasion-methodology`
-- **免杀技术整合** → `/skill:evasion-technique-integrate`
-- **持久化维持** → `/skill:persist-maintain`

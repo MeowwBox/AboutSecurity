@@ -12,8 +12,6 @@ metadata:
 
 # Web/AI 跨域攻击链方法论
 
-> **相关 skill**：间接注入 → `prompt-injection`；Agent 工具链 → `agent-security`；MCP 协议 → `mcp-security`
-
 ## 概述
 
 现代系统中 Web 服务与 AI/LLM 组件共享数据管道和基础设施。Web 层的低危漏洞（如受限 SSRF）接触到内部模型 API 时可升级为 Prompt 注入；反过来，Prompt 注入通过 Agent 工具链回写数据库可产生存储型 XSS。跨域攻击链的价值在于将两个领域的"中低危"串联为"高危/严重"。

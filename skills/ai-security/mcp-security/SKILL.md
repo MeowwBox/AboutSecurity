@@ -12,8 +12,6 @@ metadata:
 
 # MCP 协议安全测试方法论
 
-> **相关 skill**：间接注入 → `prompt-injection`；Agent 工具链攻击 → `agent-security`
-
 ## 概述
 
 MCP (Model Context Protocol) 为 LLM 提供标准化的工具调用接口，但其信任模型存在根本缺陷：模型必须解析工具的完整描述（description）来决定如何调用，而这些描述由 MCP Server 控制。攻击者可通过恶意 Server 在描述中注入指令，劫持模型行为——这比传统 Prompt 注入更隐蔽，因为用户通常不会审查工具描述的原始内容。

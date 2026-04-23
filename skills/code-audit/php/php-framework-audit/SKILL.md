@@ -12,9 +12,6 @@ metadata:
 ---
 
 # PHP 框架特定安全审计
-
-> 相关 skill: `php-audit-pipeline` -- 通用 PHP 审计流水线，本 skill 在其基础上聚焦框架层面。
-
 ## 框架识别决策表
 
 | 识别特征 | 框架 | 深入参考 |

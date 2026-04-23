@@ -175,10 +175,3 @@ OPSEC 最优方案（预防 > 清除）：
 | Prefetch 分析 | 工具执行记录 | 删除 .pf 或不用独立 EXE |
 | 卷影副本 | 历史文件快照 | vssadmin delete shadows |
 | 日志分析 | 登录/操作记录 | 精确日志行删除（非清空） |
-
-## 关联技能
-
-- **后渗透 Linux** → `/skill:post-exploit-linux`
-- **后渗透 Windows** → `/skill:post-exploit-windows`
-- **持久化维持** → `/skill:persist-maintain`
-- **内存取证对抗** → `/skill:memory-forensics-evasion`

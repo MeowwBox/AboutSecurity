@@ -59,10 +59,10 @@ fscan -h 10.0.0.0/24 -nopoc
 ## Phase 3: 深层渗透
 
 通过代理进入内网后，按优先级：
-1. **内网侦察** → 参考 `internal-recon` 技能
-2. **域环境攻击** → 参考 `ad-domain-attack` 技能
-3. **凭据喷洒** → 参考 `cred-spray` 技能
-4. **横向移动** → 参考 `lateral-movement` 技能
+1. **内网侦察**
+2. **域环境攻击**
+3. **凭据喷洒**
+4. **横向移动**
 
 ## 注意事项
 - **proxychains 只支持 TCP**，不支持 ICMP（ping 不可用，nmap 用 `-Pn -sT`）

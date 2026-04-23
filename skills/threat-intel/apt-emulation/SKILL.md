@@ -177,10 +177,3 @@ Sleep 模式：
 | Red Canary Reports | 年度威胁报告 |
 | ATT&CK Evaluations | 厂商检测能力对比 |
 | Threat Actor Playbooks (SCYTHE) | 预制攻击剧本 |
-
-## 关联技能
-
-- **红队评估** → `/skill:red-team-assessment`
-- **C2 免杀方法论** → `/skill:c2-evasion-methodology`
-- **IOC 分析与对抗** → `/skill:ioc-analysis`
-- **社会工程** → `/skill:social-engineering`

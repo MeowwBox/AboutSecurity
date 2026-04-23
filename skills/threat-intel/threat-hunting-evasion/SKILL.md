@@ -205,10 +205,3 @@ yara -r sigma_rules/ my_payload.exe  # 扫描前先自测
 [ ] 目标是否部署了 Sysmon？配置了哪些规则？
 [ ] 目标 EDR 是什么？我是否在同类环境测试过？
 ```
-
-## 关联技能
-
-- **IOC 分析与对抗** → `/skill:ioc-analysis`
-- **APT 模拟** → `/skill:apt-emulation`
-- **C2 免杀方法论** → `/skill:c2-evasion-methodology`
-- **日志逃逸** → `/skill:log-evasion`

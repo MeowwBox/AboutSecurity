@@ -172,10 +172,3 @@ Linux 精准清除:
 | Sysmon EID 10 | 进程访问 | Handle duplicate |
 | auditd | syscall审计 | 关闭 auditd / 直接 syscall |
 | 网络日志 | 连接记录 | 域前置 / CDN / 合法服务 |
-
-## 关联技能
-
-- **后渗透 Windows** → `/skill:post-exploit-windows`
-- **后渗透 Linux** → `/skill:post-exploit-linux`
-- **C2 免杀方法论** → `/skill:c2-evasion-methodology`
-- **免杀研究** → `/skill:evasion-research`

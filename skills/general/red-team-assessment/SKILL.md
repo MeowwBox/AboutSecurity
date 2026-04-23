@@ -14,7 +14,7 @@ metadata:
 
 在不触碰目标的情况下收集情报：
 
-1. **OSINT 搜索引擎**（参考 `passive-recon` 技能）
+1. **OSINT 搜索引擎**
    - 通过 `http_request` 或 `curl` 查询 FOFA / Quake / Hunter API 三引擎交叉搜索
    - 目标：IP/域名资产清单、暴露的服务、技术栈
 
@@ -27,7 +27,7 @@ metadata:
 
 ## Phase 2: 主动侦察
 
-基于被动侦察结果，有针对性地主动探测（参考 `recon-full` 技能）：
+基于被动侦察结果，有针对性地主动探测：
 
 1. **子域名枚举** — `subfinder` / `ksubdomain`
 2. **端口扫描** — `naabu`（聚焦高价值端口，nmap 作为备选）
@@ -46,15 +46,15 @@ metadata:
 ### 3.2 手动测试（按资产类型）
 对每个 Web 应用，根据技术栈选择专项测试：
 
-| 发现 | 测试方向 | 参考技能 |
-|------|----------|----------|
-| 登录页面 | SQL注入、弱密码 | `sql-injection-methodology`, `default-cred-sweep` |
-| 搜索/查询功能 | SQL注入、XSS | `sql-injection-methodology`, `xss-methodology` |
-| 文件上传 | 文件上传绕过 | `file-upload-methodology` |
-| API 端点 | IDOR、认证绕过 | `api-fuzz`, `idor-methodology` |
-| 模板渲染 | SSTI | `ssti-methodology` |
-| JWT Token | JWT 攻击 | `jwt-attack-methodology` |
-| Java 应用 | 反序列化 | `java-deserialization-methodology` |
+| 发现 | 测试方向 |
+|------|----------|
+| 登录页面 | SQL注入、弱密码 |
+| 搜索/查询功能 | SQL注入、XSS |
+| 文件上传 | 文件上传绕过 |
+| API 端点 | IDOR、认证绕过 |
+| 模板渲染 | SSTI |
+| JWT Token | JWT 攻击 |
+| Java 应用 | 反序列化 |
 
 ### 3.3 关键决策
 - **广度优先**：先对所有资产做快速扫描，标记所有可能的入口
@@ -66,12 +66,12 @@ metadata:
 发现漏洞后，进行利用验证：
 1. 确认漏洞可利用（PoC 验证）
 2. 评估影响范围（数据泄露 / RCE / 权限提升）
-3. 如获得 shell → 执行后渗透（参考 `post-exploit-linux` / `post-exploit-windows`）
+3. 如获得 shell → 执行后渗透
 4. 记录完整的利用步骤（复现用）
 
 ## Phase 5: 报告输出
 
-参考 `report-generate` 技能生成正式报告。
+生成正式报告。
 
 **关键原则**：
 - 发现按风险等级排序（严重 > 高 > 中 > 低 > 信息）
@@ -93,9 +93,3 @@ metadata:
 - 时间有限时注重效率和 ROI，合理分配资源
 - 遇到瓶颈及时换路（pivot）：切换攻击面、放弃当前路径、转向其他攻击面
 - 寻找替代方案和新入口点
-
-## 关联技能
-
-- **APT 模拟** → `/skill:apt-emulation`
-- **IOC 分析与对抗** → `/skill:ioc-analysis`
-- **威胁猎杀规避** → `/skill:threat-hunting-evasion`

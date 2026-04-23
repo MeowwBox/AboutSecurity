@@ -8,8 +8,6 @@ metadata:
 
 # AI Prompt 间接注入方法论
 
-> **相关 skill**：直接越狱 → `prompt-jailbreak`；系统提示泄露 → `prompt-leak`；AI 基础设施攻击 → `ai-infrastructure-attack`；MCP 协议安全 → `mcp-security`；Agent 系统安全 → `agent-security`；思维链注入 → `cot-injection`；跨域攻击链 → `cross-domain-attack-chain`
-
 ## 概述
 
 Prompt Injection（提示注入）是指攻击者通过 AI 系统处理的外部数据源，注入恶意指令来操控模型行为。与 jailbreak（用户直接输入）不同，injection 利用**不受信任的第三方数据**作为攻击载体，模型无法区分"数据"和"指令"。
@@ -92,6 +90,3 @@ Prompt Injection（提示注入）是指攻击者通过 AI 系统处理的外部
 - [Markdown Image Exfiltration in ChatGPT Plugins](https://embracethered.com/blog/posts/2023/chatgpt-plugin-data-exfiltration/)
 - [Google Bard Indirect Injection via Google Docs](https://embracethered.com/blog/posts/2023/google-bard-data-exfiltration/)
 
-## 相关技能
-
-- 对抗样本生成（FGSM/PGD/C&W）、模型提取/反演 → `/skill:ctf-ai-ml`

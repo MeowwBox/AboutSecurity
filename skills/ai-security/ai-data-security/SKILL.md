@@ -12,8 +12,6 @@ metadata:
 
 # AI 数据安全测试方法论
 
-> **相关 skill**：System Prompt 泄露技巧 → `prompt-leak`；间接提示注入 → `prompt-injection`
-
 ## 攻击面总览
 
 | 阶段 | 攻击类型 | 目标 |

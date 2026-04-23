@@ -11,9 +11,6 @@ metadata:
 ---
 
 # PHP 认证配置与逻辑类漏洞源码审计
-
-> **相关 skill**: 审计总流程 → `php-audit-pipeline` | 注入类 → `php-injection-audit` | 文件类 → `php-file-audit`
-
 本 skill 聚焦源码层面的认证、授权、配置、密码学和业务逻辑缺陷。运行时利用（如 JWT 伪造、条件竞争脚本）属于对应黑盒 exploit skill 范畴。
 
 ## 深入参考

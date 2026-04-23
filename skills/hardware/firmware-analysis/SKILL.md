@@ -426,8 +426,3 @@ dd if=new_rootfs.squashfs of=modified_firmware.bin bs=1 seek=<offset> conv=notru
 | DVAR | Damn Vulnerable ARM Router |
 | ARM-X | ARM 固件模拟框架 |
 | DVID | Damn Vulnerable IoT Device |
-
-## 关联技能
-
-- **二进制漏洞利用** → 分析固件中的二进制漏洞
-- **网络服务渗透** → 测试固件暴露的网络服务

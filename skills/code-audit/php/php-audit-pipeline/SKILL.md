@@ -11,9 +11,6 @@ metadata:
 ---
 
 # PHP 白盒审计总方法论
-
-> **相关 skill**: 注入类 → `php-injection-audit` | 文件类 → `php-file-audit` | 前端类 → `php-frontend-audit` | 序列化类 → `php-serialization-audit` | 认证配置 → `php-auth-config-audit` | 框架特定 → `php-framework-audit` | 利用链 → `php-exploit-chain`
-
 白盒审计在源码层面发现漏洞，关注"代码为什么不安全"。发现漏洞后的实际利用技术（构造 payload、绕过 WAF）属于黑盒 exploit skill 范畴。
 
 ## 深入参考
@@ -63,18 +60,18 @@ metadata:
 ## Phase 4: 分类漏洞审计
 
 按 Sink 类型分派到对应子 skill 进行深入审计:
-- 注入类（SQL/CMD/LDAP/表达式）→ `php-injection-audit`
-- 文件类（读取/包含/上传/写入/归档）→ `php-file-audit`
-- 前端类（XSS/CSRF/重定向/CRLF）→ `php-frontend-audit`
-- 序列化类（反序列化/XXE）→ `php-serialization-audit`
-- 认证配置类（越权/弱加密/信息泄露）→ `php-auth-config-audit`
-- 框架特定漏洞（已知 CVE、框架配置缺陷）→ `php-framework-audit`
+- 注入类（SQL/CMD/LDAP/表达式）
+- 文件类（读取/包含/上传/写入/归档）
+- 前端类（XSS/CSRF/重定向/CRLF）
+- 序列化类（反序列化/XXE）
+- 认证配置类（越权/弱加密/信息泄露）
+- 框架特定漏洞（已知 CVE、框架配置缺陷）
 
 ## Phase 5: 报告与利用链组装
 
 **严重度评分**: `Score = R * 0.40 + I * 0.35 + C * 0.25`（R=可达性, I=影响范围, C=利用复杂度，各 0-3 分）
 
-将同一目标上的多个漏洞组合为利用链（如: 信息泄露→认证绕过→文件写入→RCE），详见 `php-exploit-chain`。
+将同一目标上的多个漏洞组合为利用链（如: 信息泄露→认证绕过→文件写入→RCE）。
 
 ## 审计质量检查清单
 

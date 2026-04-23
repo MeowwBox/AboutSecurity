@@ -11,9 +11,6 @@ metadata:
 ---
 
 # Java 文件操作类漏洞源码审计
-
-> **相关 skill**: 审计总流程 → `java-audit-pipeline` | 文件上传黑盒利用 → `file-upload-methodology` | 路径穿越黑盒利用 → `path-traversal`
-
 本 skill 聚焦源码层面判断"文件操作漏洞是否成立"，核心是验证路径可控性、文件名可控性和内容可控性。构造上传绕过 payload、目录穿越利用链等运行时利用技术属于对应黑盒 exploit skill 范畴。
 
 ## 深入参考

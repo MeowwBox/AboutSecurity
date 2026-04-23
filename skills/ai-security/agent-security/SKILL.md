@@ -12,8 +12,6 @@ metadata:
 
 # AI Agent 安全测试方法论
 
-> **相关 skill**：MCP 工具安全 → `mcp-security`；间接注入 → `prompt-injection`；思维链注入 → `cot-injection`
-
 ## 概述
 
 AI Agent 与普通 LLM 应用的本质区别在于**自主行动能力**——Agent 拥有工具调用、代码执行、持久记忆和多步规划能力，这意味着一次成功的注入不再只是生成错误文本，而是可以触发真实的系统操作。攻击面从"模型输出"扩展到了"工具执行链、Agent 间通信、持久化状态"的全栈。

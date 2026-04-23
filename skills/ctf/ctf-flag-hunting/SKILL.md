@@ -125,8 +125,6 @@ LFI 比 RCE 限制更多——只能读文件，不能执行命令。
 5. **日志文件**：`/var/log/apache2/access.log` — 日志投毒准备
 
 **LFI 转 RCE**（读完配置后仍找不到 flag）：
-- Session 文件包含 → 参考 `lfi-rfi-methodology` Phase 4
-- 日志投毒 → 参考 `lfi-rfi-methodology` Phase 4
 
 ---
 

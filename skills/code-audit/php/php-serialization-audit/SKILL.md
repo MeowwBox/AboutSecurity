@@ -11,9 +11,6 @@ metadata:
 ---
 
 # PHP 序列化与模板类漏洞源码审计
-
-> **相关 skill**: 审计总流程 → `php-audit-pipeline` | 反序列化黑盒利用 → `deserialization-methodology` | XXE 黑盒利用 → `xxe-injection-methodology`
-
 本 skill 聚焦源码层面判断"反序列化/XXE/SSTI 是否成立"，核心是验证 Source→Sink 路径上的数据可控性和安全配置。构造 payload、链条利用等运行时技术属于对应黑盒 exploit skill 范畴。
 
 ## 深入参考

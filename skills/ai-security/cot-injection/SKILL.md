@@ -12,8 +12,6 @@ metadata:
 
 # 思维链 (CoT) 注入攻击方法论
 
-> **相关 skill**：Agent 安全 → `agent-security`；间接注入 → `prompt-injection`
-
 ## 概述
 
 CoT（Chain-of-Thought）推理通过 Thought → Act → Obs 循环让 LLM 分步解决问题，ReAct 框架在此基础上引入外部工具调用。与传统代码流程的严格分支控制不同，CoT 的每一步决策都由模型基于上下文动态生成，这种开放性使得攻击者可以通过精心构造的输入干扰或操纵推理链路——让模型"以为"某步已完成、"认为"某步可跳过，从而在不触发传统安全机制的情况下达成攻击目标。

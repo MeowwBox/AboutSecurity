@@ -191,10 +191,3 @@ Pass-the-PRT (Primary Refresh Token):
 | MSOLSpray | 密码喷洒 |
 | GraphRunner | Graph API 交互 |
 | Trevorspray | 分布式喷洒 |
-
-## 关联技能
-
-- **AD 域攻击** → `/skill:ad-domain-attack`
-- **Cloud IAM 审计** → `/skill:cloud-iam-audit`
-- **OAuth/SSO 攻击** → `/skill:oauth-sso-attack`
-- **ADCS 证书攻击** → `/skill:adcs-certipy-attack`

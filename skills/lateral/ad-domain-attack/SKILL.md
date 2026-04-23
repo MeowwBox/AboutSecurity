@@ -71,15 +71,6 @@ netexec smb 10.0.0.0/24 -u admin -H NTLM_HASH   # PTH
 | 漏洞利用 | certipy (ADCS), zerologon 脚本 |
 | NTLM 中继 | ntlmrelayx + Responder |
 | 证书攻击 | certipy (ESC1-ESC11) |
-
-## 关联技能
-
-- **ADCS 证书攻击**（ESC1-ESC11 完整利用链）→ `/skill:adcs-certipy-attack`
-- **NTLM 中继攻击**（Responder/PetitPotam/Relay）→ `/skill:ntlm-relay-attack`
-- **横向移动**（WinRM/PSExec/PTH/PTT）→ `/skill:lateral-movement`
-- **Kerberoasting 攻击** → `/skill:kerberoast-attack`
-- **AD ACL 滥用** → `/skill:ad-acl-abuse`
-
 ## Password Spray 安全策略
 - 检查域密码策略：Lockout duration（锁定时长/冷却时间）
 - 避免账户锁定影响可用性

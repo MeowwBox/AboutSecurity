@@ -49,7 +49,7 @@ naabu -host 10.0.0.0/24 -p 22,80,135,445,3389,5985 -silent
 ## Phase 3: 移动后操作
 
 1. 确认权限 — `whoami /all` 或 `id`
-2. 重复后渗透流程 — 参考 `post-exploit-linux` 或 `post-exploit-windows`
+2. 重复后渗透流程
 3. 收集新凭据 — 可能发现更高权限凭据
 4. 评估下一步目标
 

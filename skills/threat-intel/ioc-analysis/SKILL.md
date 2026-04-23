@@ -159,10 +159,3 @@ C2 基础设施设计原则：
 [ ] 销毁所有 Redirector
 [ ] 确认无 DNS 残留指向已销毁 IP
 ```
-
-## 关联技能
-
-- **C2 免杀方法论** → `/skill:c2-evasion-methodology`
-- **免杀研究** → `/skill:evasion-research`
-- **社会工程** → `/skill:social-engineering`
-- **红队评估** → `/skill:red-team-assessment`
