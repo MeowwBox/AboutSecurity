@@ -5,7 +5,7 @@ upload.sh
 zip.sh
 .github
 .lingma
-.claude
+.claude/skills/skill-creator
 # Benchmark outputs (generated, not committed)
 /benchmarks/
 /docs/
