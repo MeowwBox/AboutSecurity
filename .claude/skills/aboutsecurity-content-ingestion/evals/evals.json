@@ -3,7 +3,7 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "把 /Users/f0x/dev-project/fork/InternalAllTheThings/docs/cloud/azure 里的 Azure DevOps 内容吸收到 AboutSecurity，先分析现有结构和差距，不要编造工具参数。",
+      "prompt": "把 InternalAllTheThings/docs/cloud/azure 里的 Azure DevOps 内容吸收到 AboutSecurity，先分析现有结构和差距，不要编造工具参数。",
       "expected_output": "先读取 AboutSecurity 规范和相关 skill/reference，输出差距分析，明确哪些内容已有、哪些可新增、哪些需要验证，再做最小必要修改。",
       "files": []
     },
