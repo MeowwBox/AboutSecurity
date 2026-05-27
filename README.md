@@ -181,7 +181,7 @@ AboutSecurity is the knowledge layer of the **WgpSec Agentic Ecosystem** — a f
 | [AboutSecurity](https://github.com/wgpsec/AboutSecurity) | Structured pentest knowledge base (Skills, Dic, Payload, Vuln) |
 | [context1337](https://github.com/wgpsec/context1337) | MCP Server — turns AboutSecurity into a searchable API for AI agents |
 | [tchkiller](https://github.com/wgpsec/tchkiller) | Autonomous pentest agent with multi-round decision-making and team collaboration |
-| [benchmark-platform](https://github.com/wgpsec/benchmark-platform) | CTF challenge platform for evaluating agent offensive capabilities |
+| [benchmark-platform](https://github.com/wgpsec/benchmark-platform) | HunXiang CTF challenge platform for evaluating agent offensive capabilities |
 | [benchmark-challenges](https://github.com/wgpsec/benchmark-challenges) | Challenge data repository — packed & distributed via GitHub Releases |
 | PoJun | General-purpose AI problem-solving engine (private) |
 
