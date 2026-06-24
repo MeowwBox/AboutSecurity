@@ -63,7 +63,7 @@
 ### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/your-org/AboutSecurity.git
+git clone https://github.com/wgpsec/AboutSecurity.git
 ```
 
 ### 2. 同步 Skills 到你的项目
